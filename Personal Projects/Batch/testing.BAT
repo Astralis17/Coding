@@ -1,0 +1,1 @@
+start MSGBOX/msgbox.vbs

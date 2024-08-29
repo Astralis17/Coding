@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://us6hsimtmh0g"]
+
+[ext_resource type="Texture2D" uid="uid://b0vh6vlir1sdj" path="res://Textures/World/White-Square.png" id="1_guqv2"]
+[ext_resource type="Script" path="res://Player.gd" id="2_lp56c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvgkc"]
+size = Vector2(119, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q321s"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c058s"]
+size = Vector2(1.62866, 2.76873)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bxas1"]
+load_path = "res://.godot/imported/dash.png-8cd2cb3f1c88118fff147e6d9dd01638.ctex"
+
+[sub_resource type="Animation" id="Animation_5gyjv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6dd13"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_jarai"]
+resource_name = "run"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2lmye"]
+_data = {
+"RESET": SubResource("Animation_5gyjv"),
+"idle": SubResource("Animation_6dd13"),
+"run": SubResource("Animation_jarai")
+}
+
+[node name="Level" type="Node2D"]
+
+[node name="Cube" type="RigidBody2D" parent="."]
+position = Vector2(-361, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cube"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_bvgkc")
+
+[node name="Icon2" type="Sprite2D" parent="Cube"]
+texture = ExtResource("1_guqv2")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(10, 233)
+scale = Vector2(10, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_q321s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("1_guqv2")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_lp56c")
+JUMP_VELOCITY = -700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-9.53674e-07, 1)
+scale = Vector2(12.28, 12.28)
+shape = SubResource("RectangleShape2D_c058s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+modulate = Color(1, 0, 1, 1)
+texture_filter = 1
+scale = Vector2(2.32, 2.32)
+texture = SubResource("CompressedTexture2D_bxas1")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Sprite2D"]
+autoplay = "run"
+libraries = {
+"": SubResource("AnimationLibrary_2lmye")
+}
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(-0.049182, 1.12609)
+zoom = Vector2(1.5, 1.5)
