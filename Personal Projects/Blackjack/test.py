@@ -1,14 +1,16 @@
-import random, math
+import random
 
 runTime = True
 x = 0
 y = 0
-z = 0
+TotalPoints = 0
 i = 4
 Difficulty = 0
 difficulties = ["House", "Amateur", "Professional"]
-#Card & Deck Setup
+
 discardPile = []
+hand = []
+#Card & Deck Setup
 def cardSet(suit, reversed):
         list = []
         i = 1
@@ -34,10 +36,12 @@ def AddCardSuit(SuitDeck, NewDeck):
 
 def Shuffle(deck):
         shuffledDeck = []
-        while len(deck) > 0:
-                i = random.randint(0, len(deck)-1)
-                shuffledDeck.append(deck[i])
-                deck.remove(deck[i])
+        d = []
+        d += deck
+        while len(d) > 0:
+                i = random.randint(0, len(d)-1)
+                shuffledDeck.append(d[i])
+                d.remove(d[i])
 
         return shuffledDeck
 
@@ -60,7 +64,7 @@ print("Blank Deck: ", NewDeck)
 
 Deck = Shuffle(NewDeck)
 print("Shuffled Deck: ", Deck)
-
+print("")
 while i > 3:
         print("Please select a difficulty level, Home, Amateur or Casino")
         i = int(input("Enter 1-3 for difficulty or 4 for information: "))
@@ -69,7 +73,13 @@ while i > 3:
 Difficulty = i-1
 print(difficulties[Difficulty], "Difficulty Selected")
 
+if Difficulty == 1:
+        Deck = ShuffleIn(Deck, NewDeck)
+elif Difficulty == 2:
+        Deck = ShuffleIn(Deck, NewDeck)
+        Deck = ShuffleIn(Deck, NewDeck)
+        Deck = ShuffleIn(Deck, NewDeck)
 
-
+print(Deck)
 while runTime:
-        print("")
+        break
