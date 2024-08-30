@@ -1,0 +1,4 @@
+ABCDEFGHIJKLMNOPQTSTUVWXYZ
+ciphertext
+keyproccessing
+Vigenère

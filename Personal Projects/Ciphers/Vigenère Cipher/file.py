@@ -1,6 +1,5 @@
 import functions
 
-
 plaintext = ""
 ciphertext = ""
 key = ""
@@ -11,8 +10,8 @@ print("Enter 1 to select Encoding")
 print("Enter 2 to select Decoding")
 while run:
     mode = int(input("Mode: "))
-    if mode !=1:   
-        if mode != 2: 
+    if mode !=1:
+        if mode != 2:
             print("ERROR")
         else:
             run = False

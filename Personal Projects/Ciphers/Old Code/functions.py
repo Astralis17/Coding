@@ -46,7 +46,7 @@ def decode(ciphertext):
     processing = ciphertext
     list = []
 
-    try: 
+    try:
         while processing[-1] == "a":
             string = ""
             checking = True
@@ -54,11 +54,11 @@ def decode(ciphertext):
                 if processing[0] + processing[1] == "10":
                     i = 2
                     string += "."
-                    
+
                 if processing[0] + processing[1] == "11":
                     i = 4
                     string += "-"
-                    
+
                 if processing[0] == "a":
                     list.append(string)
 

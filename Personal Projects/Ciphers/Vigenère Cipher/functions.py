@@ -16,8 +16,8 @@ def keyproccessing(plaintext, key):
             a = 0
             i += 1
         else:
-            a+=1        
-
+            a+=1
+    print(key2)
     return key2
 
 
@@ -27,16 +27,17 @@ def encoding(plaintext, key):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     ALPHABET = "ABCDEFGHIJKLMNOPQTSTUVWXYZ"
     processString = ""
-    i = 0
     a = 0
     run = True
     for letter in plaintext:
         shift = key[a]
         print(shift)
+        i = 0
         while run:
             if letter == " ":
                 processString += " "
                 run = False
+                a -= 1
             if letter == alphabet[i % 26]:
                 processString += alphabet[(i + shift) % 26]
                 run = False
@@ -44,26 +45,27 @@ def encoding(plaintext, key):
                 processString += ALPHABET[(i + shift) % 26]
                 run = False
             i += 1
-            
-        i = 0
+
         a += 1
         run = True
+        print("processString",processString)
     return processString
 
 def decoding(plaintext, key):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     ALPHABET = "ABCDEFGHIJKLMNOPQTSTUVWXYZ"
     processString = ""
-    i = 0
     a = 0
     run = True
     for letter in plaintext:
+        i = 0
         shift = key[a]
         print(shift)
         while run:
             if letter == " ":
                 processString += " "
                 run = False
+                a -= 1
             if letter == alphabet[i % 26]:
                 processString += alphabet[(i - shift) % 26]
                 run = False
@@ -71,8 +73,7 @@ def decoding(plaintext, key):
                 processString += ALPHABET[(i - shift) % 26]
                 run = False
             i += 1
-            
-        i = 26
+
         a += 1
         run = True
     return processString
