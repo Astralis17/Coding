@@ -3,16 +3,13 @@ import random
 runTime = True
 i = 4
 Difficulty = 0
-difficulties = ["House", "Amateur", "Professional"]
+difficulties = ["Home", "Amateur", "Professional"]
 suitNames = ["of Hearts", "of Diamonds", "of Clubs", "of Spades"]
 cardNames = ["An Ace", "A Two", "A Three", "A Four", "A Five", "A Six", "A Seven", "An Eight", "A Nine", "A Ten", "A Jack", "A Queen", "A King"]
 
 discardPile = []
-
 PlayerHand = []
 DealerHand = []
-PlayerScore = 0
-DealerScore = 0
 
 #Card & Deck Setup
 def cardSet(suit, reversed):
@@ -57,7 +54,7 @@ def draw(hand, deck):
         hand.append(deck.pop(0))
         return hand
 
-def showHand(hand, isPlayer):
+def showHand(hand, isPlayer, printing):
         suitIDs   = ["H", "D", "C", "S",]
         cardIDs   = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
         suitNames = [" of Hearts", " of Diamonds", " of Clubs", " of Spades"]
@@ -69,7 +66,7 @@ def showHand(hand, isPlayer):
         if isPlayer:
                 output = "Your hand has "
         else:
-                output = "Dealer's Hand"
+                output = "Dealer's hand has "
         handList = []
 
         for card in hand:
@@ -114,14 +111,16 @@ def showHand(hand, isPlayer):
                 else:
                         score += 1
 
+        if printing:
+                print("")
+                print(output)
+                if isPlayer:
+                        print("Your Score is: ", score)
+                else:
+                        print("The Dealer's Score is: ", score)
+                print("")
 
-        print(output)
-        if isPlayer:
-                print("Your Score is: ", score)
-        else:
-                print("The Dealer's Score is: ", score)
         return score
-
 
 Hearts   = cardSet("H", False)
 Diamonds = cardSet("D", True)
@@ -134,15 +133,14 @@ NewDeck = AddCardSuit(Clubs, NewDeck)
 NewDeck = AddCardSuit(Diamonds, NewDeck)
 NewDeck = AddCardSuit(Spades, NewDeck)
 
-#print("Blank Deck: ", NewDeck)
-
 Deck = Shuffle(NewDeck)
-#print("Shuffled Deck: ", Deck)
+
 while i > 3:
         print("Please select a difficulty level, Home, Amateur or Casino")
         i = int(input("Enter 1-3 for difficulty or 4 for information: "))
         if i > 3:
                 print("Difficulty in Blackjack is increased by adding and removing decks of cards, Home has 1 deck, Amateur has 2 decks, Casino has 4 decks")
+
 Difficulty = i-1
 print(difficulties[Difficulty], "Difficulty Selected")
 
@@ -153,24 +151,68 @@ elif Difficulty == 2:
         Deck = ShuffleIn(Deck, NewDeck)
         Deck = ShuffleIn(Deck, NewDeck)
 
+inGame = True
+
+PlayerHand = draw(PlayerHand, Deck)
+DealerHand = draw(DealerHand, Deck)
+PlayerHand = draw(PlayerHand, Deck)
+DealerHand = draw(DealerHand, Deck)
+
+PlayerScore = showHand(PlayerHand, True, True)
+DealerScore = showHand(DealerHand, False, True)
+
 while runTime:
-        if (input("Play Game?(y/n): ")).capitalize().startswith("Y"):
+
+        while inGame:
+                if len(Deck) == 0:
+                        Deck = ShuffleIn(Deck, discardPile)
+
+                print("Dealer: Do you wish to Hit or Stand")
+                choice = input()
+                if choice.capitalize().startswith("H"):
+                        PlayerHand = draw(PlayerHand, Deck)
+                        PlayerScore = showHand(PlayerHand, True, True)
+
+                elif choice.capitalize().startswith("S"):
+                        inGame = False
+
+                        while DealerScore < 17:
+                                DealerHand = draw(DealerHand, Deck)
+                                DealerScore = showHand(DealerHand, False, True)
+
+                        DealerScore = showHand(DealerHand, False, False)
+                        PlayerScore = showHand(PlayerHand, True, False)
+
+                        if DealerScore > PlayerScore and DealerScore <= 21:
+                                print("Dealer wins")
+                                inGame = False
+                        elif PlayerScore > DealerScore and PlayerScore <= 21:
+                                print("You win")
+                                inGame = False
+
+
+                if PlayerScore > 21:
+                        inGame = False
+                        print("You went over 21, Dealer wins")
+                elif PlayerScore == 21:
+                        inGame = False
+                        print("You ended on 21, You wins")
+                elif DealerScore > 21:
+                        inGame = False
+                        print("Dealer went over 21, You wins")
+
+        PlayerHand = []
+        DealerHand = []
+        PlayerScore = 0
+        DealerScore = 0
+
+        if (input("Play Again?(y/n): ")).capitalize().startswith("Y"):
                 inGame = True
                 PlayerHand = draw(PlayerHand, Deck)
+                DealerHand = draw(DealerHand, Deck)
                 PlayerHand = draw(PlayerHand, Deck)
-                PlayerHand = draw(PlayerHand, Deck)
-                PlayerHand = draw(PlayerHand, Deck)
+                DealerHand = draw(DealerHand, Deck)
 
-                while inGame:
-                        if len(Deck) == 0:
-                                Deck = ShuffleIn(Deck, discardPile)
-
-                        PlayerScore = showHand(PlayerHand, True)
-                        DealerScore = showHand(DealerHand, False)
-
-                        print("Dealer: Do you wish to Hit or Stand")
-                        if (input()).capitalize().startswith("H"):
-                                PlayerHand = draw(PlayerHand, Deck)
-                        elif (input()).capitalize().startswith("S"):
-                                break
+                PlayerScore = showHand(PlayerHand, True, True)
+                DealerScore = showHand(DealerHand, False, True)
 
