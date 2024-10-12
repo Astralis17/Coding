@@ -9,18 +9,17 @@ Row2 = [Dictionary.CharSelect, Dictionary.Main, Dictionary.Settings]
 player = Dictionary.player
 
 Coordinates = [Row1, Row2]
+
 windows = {
-"height" : 600,
+"height" : 700,
 "width" : 1000,
 "border" : 100
-
 }
-
 window = pygame.display.set_mode((windows["width"], windows["height"]))
 
 
 x = 1
-y = 0
+y = 1
 i = 0
 run = True
 
@@ -36,29 +35,41 @@ def input(x, y, keys):
     return x, y
 
 def RoomChange(x, y, playerx, playery, Coordinates):
-    if Coordinates[y][x]["Down"] and playerx >= (windows["width"] /2-15)  and playerx <= (windows["width"]/2+15) and playery >= windows["height"]:
+    if Coordinates[y][x]["Down"]  and playerx >= (windows["width"]/2-15)   and playerx <= (windows["width"]/2+15)  and playery >= windows["height"] -1:
         y += 1
         playery = 5
 
-    if Coordinates[y][x]["Up"] and playerx >= (windows["width"]/2-15)  and playerx <= (windows["width"]/2+15) and playery <= 0:
-        y -= 1
-        playery = 195
+    if Coordinates[y][x]["Down"]:
+        if not playerx >= (windows["width"]/2-15):
+            print("Check left needed")
 
-    if Coordinates[y][x]["Right"] and (windows["height"]/2-15)  and playerx <= (windows["height"]/2+15) and playerx >= (windows["width"] - windows["border"]):
+        if not playerx <= (windows["width"]/2+15):
+            print("Check right needed")
+
+        if not playery >= windows["height"] -1:
+            print("Check move needed")
+
+
+
+    if Coordinates[y][x]["Up"]    and playerx >= (windows["width"]/2-15)   and playerx <= (windows["width"]/2+15)  and playery <= 0:
+        y -= 1
+        playery = windows["height"] - 5
+
+    if Coordinates[y][x]["Right"] and playery >= (windows["height"]/2-15)  and playery <= (windows["height"]/2+15) and playerx >= (windows["width"] - windows["border"]):
         x += 1
         playerx = 5
 
-    if Coordinates[y][x]["Left"] and (windows["height"]/2-15)  and playerx <= (windows["height"]/2+15) and playerx >= windows["width"]:
+    if Coordinates[y][x]["Left"]  and playery >= (windows["height"]/2-15)  and playery <= (windows["height"]/2+15) and playerx >= windows["width"]:
         x -= 1
-        playerx = 195
-        
+        playerx = (windows["width"] - windows["border"])
+
     return x, y, playerx, playery
 
 def Border(x, y, windows):
     x = player["x"]
     y = player["y"]
-    playerwidth = player["example_stuff"]["width"]
-    playerheight = player["example_stuff"]["height"]
+    playerwidth = player["dimensions"]["width"]
+    playerheight = player["dimensions"]["height"]
 
 
     if x < windows["border"]:
@@ -100,7 +111,7 @@ while run:
     player["x"], player["y"] = Border(player["x"], player["y"], windows)
 
     i = CoordinateCheck(player, x, y, i)
-    pygame.draw.rect(window, (92, 51, 123), (player["x"], player["y"], player["example_stuff"]["width"], player["example_stuff"]["height"]))
+    pygame.draw.rect(window, (92, 51, 123), (player["x"], player["y"], player["dimensions"]["width"], player["dimensions"]["height"]))
 
 
 

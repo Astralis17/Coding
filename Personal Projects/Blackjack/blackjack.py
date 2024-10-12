@@ -106,7 +106,7 @@ def showHand(hand, isPlayer, printing):
 
         while aces != 0:
                 aces -= 1
-                if (score + 11 + aces) < 21:
+                if (score + 11 + aces) <= 21:
                         score += 11
                 else:
                         score += 1
@@ -157,6 +157,7 @@ PlayerHand = draw(PlayerHand, Deck)
 DealerHand = draw(DealerHand, Deck)
 PlayerHand = draw(PlayerHand, Deck)
 DealerHand = draw(DealerHand, Deck)
+PlayerHand = ["H1","CQ"]
 
 PlayerScore = showHand(PlayerHand, True, True)
 DealerScore = showHand(DealerHand, False, True)
@@ -212,7 +213,6 @@ while runTime:
                 DealerHand = draw(DealerHand, Deck)
                 PlayerHand = draw(PlayerHand, Deck)
                 DealerHand = draw(DealerHand, Deck)
-
                 PlayerScore = showHand(PlayerHand, True, True)
                 DealerScore = showHand(DealerHand, False, True)
 

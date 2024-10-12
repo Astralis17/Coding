@@ -96,13 +96,13 @@ def turtle(Colour, x, y, Stage, speed):
         x -= speed
         pygame.draw.line(window, Colour, (x - 5, y), (x, y), 5)
         if x <= 50:
-            Stage = 3    
+            Stage = 3
 
     if Stage == 3:
         y -= speed
         pygame.draw.line(window, Colour, (x - 5, y), (x, y), 5)
         if y <= 50:
-            Stage = 0   
+            Stage = 0
 
     return  x, y, Stage
 
@@ -110,14 +110,14 @@ def Button(x, y, Link, AppClick, Name):
     inboundingbox = False
     pygame.draw.rect(window, P3, (x, y, 150, 150))
     pygame.draw.rect(window, P4, (x + 5, y + 5, 140, 140))
-    
+
     if mousex >= x and mousey >= y and mousex <= (x + 150) and mousey <= (y + 150):
         inboundingbox = True
 
     if MouseDown and inboundingbox and AppClick == False:
             os.startfile(Link)
             AppClick = True
-    render = font2.render(Name , True, white)        
+    render = font2.render(Name , True, white)
     window.blit(render, (x + 10, y + 68), )
     return AppClick
 
@@ -139,7 +139,7 @@ while run:
             MouseDown = True
         if event.type == pygame.MOUSEBUTTONUP:
             MouseDown = False
-    
+
     if MouseDown == False and AppClick == True:
         AppClick = False
 #Border Aesthetic
@@ -170,7 +170,7 @@ while run:
         stage4 = 1
         window.fill(purple)
 
-#App Buttons    
+#App Buttons
     AppClick = Button(100, 115, Link1, AppClick, Title1)
     AppClick = Button(300, 115, Link2, AppClick, Title2)
     AppClick = Button(500, 115, Link3, AppClick, Title3)

@@ -39,7 +39,7 @@ while run:
 
     playerx, playery, moving, sprite = Player_Stuff.player_movement(playerx, playery, keys, speed, moving, sprite)
     playerx, playery, dashtick, dashcharge = Player_Stuff.playerdash(playerx, playery, keys, speed, dashtick, dashcharge)
-    
+
     AnimTick, AnimFrame = Player_Stuff.AnimationTicker(AnimTick, AnimFrame, moving)
 
     #Wrapping
@@ -47,7 +47,7 @@ while run:
 
     if keys[pygame.K_SPACE]:
         pygame.draw.line(window, colours.purple,(mousex, mousey),(playerx, playery), 3)
-        
+
     if moving == False:
         window.blit(Player_Stuff.playerspritesheet[sprite][1], (playerx -32, playery -32))
     else:

@@ -17,7 +17,6 @@ def keyproccessing(plaintext, key):
             i += 1
         else:
             a+=1
-    print(key2)
     return key2
 
 
@@ -31,7 +30,6 @@ def encoding(plaintext, key):
     run = True
     for letter in plaintext:
         shift = key[a]
-        print(shift)
         i = 0
         while run:
             if letter == " ":
@@ -48,7 +46,6 @@ def encoding(plaintext, key):
 
         a += 1
         run = True
-        print("processString",processString)
     return processString
 
 def decoding(plaintext, key):
@@ -60,7 +57,6 @@ def decoding(plaintext, key):
     for letter in plaintext:
         i = 0
         shift = key[a]
-        print(shift)
         while run:
             if letter == " ":
                 processString += " "

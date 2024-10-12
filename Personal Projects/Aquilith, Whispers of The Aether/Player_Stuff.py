@@ -5,7 +5,7 @@ import pygame
 def aiming(playerx, playery, mousex, mousey):
 
     dx = mousex - playerx
-    dy = playery - mousey  
+    dy = playery - mousey
     rads = atan2(-dy,dx)
     rads %= 2*pi
     degs = degrees(rads)
@@ -17,17 +17,17 @@ def aiming(playerx, playery, mousex, mousey):
     elif degs <  67.5  and degs >= 22.5:
         target = 1
     elif degs <  112.5 and degs >= 67.5:
-        target = 2        
+        target = 2
     elif degs <  157.5 and degs >= 112.5:
-        target = 3        
+        target = 3
     elif degs <  202.5 and degs >= 157.5:
-        target = 4        
+        target = 4
     elif degs <  247.5 and degs >= 202.5:
-        target = 5        
+        target = 5
     elif degs <  292.5 and degs >= 247.5:
-        target = 6        
+        target = 6
     elif degs <  337.5 and degs > 292.5:
-        target = 7     
+        target = 7
 
     return degs, target
 

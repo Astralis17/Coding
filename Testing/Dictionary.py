@@ -48,5 +48,8 @@ player = {
             "y" : 0,
             "Energy" : 100,
             "Health" : 85,
-            "example_stuff" : stuff
+            "dimensions" : {
+                "width" : 50,
+                "height" : 50
+            }
 }
