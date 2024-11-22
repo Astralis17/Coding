@@ -1,19 +1,17 @@
 
 
 def encode(plaintext):
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    ALPHABET = "ABCDEFGHIJKLMNOPQTSTUVWXYZ"
+    alphabet = "abcdefghiklmnopqrstuvwxyz"
+    plaintext = plaintext.lower()
     poly = ["11 ","12 ","13 ","14 ","15 ","21 ","22 ","23 ","24 ","25 ","31 ","32 ","33 ","34 ","35 ","41 ","42 ","43 ","44 ","45 ","51 ","52 ","53 ","54 ","55 "]
     ciphertext = ""
     for thing in plaintext:
         x = 0
         run = True
+        if thing == " ":
+            run = False
         while run:
             if thing == alphabet[x]:
-                ciphertext += poly[x]
-                run = False
-
-            elif thing == ALPHABET[x]:
                 ciphertext += poly[x]
                 run = False
 
@@ -24,7 +22,7 @@ def encode(plaintext):
 
 
 def decode(ctext):
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = "abcdefghiklmnopqrstuvwxyz"
     poly = ["11","12","11","14","15","21","22","23","24","25","31","32","33","34","35","41","42","43","44","45","51","52","53","54","55"]
     ptext = ""
     x = 0
@@ -33,10 +31,10 @@ def decode(ctext):
     str1 = ""
     for thing in ctext:
         if thing != " ":
-            str1 += thing 
+            str1 += thing
     ctext = str1
     if (len(ctext)%2) == 1:
-        ctext = ctext[:-1]#
+        ctext = ctext[:-1]
         print(ctext)
     while run:
         str2 = ctext[x] + ctext[x + 1]
@@ -60,6 +58,3 @@ def decode(ctext):
         if len(ptext) == (len(ctext)/2):
             run = False
     return ptext
-        
-    
-        

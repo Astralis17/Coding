@@ -1,4 +1,4 @@
-import shutil, os, time,  info
+import shutil, os, time
 
 print("Welcome to the Nitrox Server manager")
 mode = 0
@@ -29,7 +29,7 @@ def load():
         except FileNotFoundError:
             slot = 0
         while os.path.exists(r"C:\Users\gmagu\Downloads\Nitrox\world"):
-            time.sleep(1)  
+            time.sleep(1)
         slot = input("Which slot(1-4): ")
         string = "Personal Projects\\Nitrox Server Manager\\Worlds\\" + slot + "\\world"
         shutil.copytree(string, "C:\\Users\\gmagu\\Downloads\\Nitrox\\world")
@@ -44,7 +44,7 @@ def save():
     try:
         shutil.rmtree(string)
     except FileNotFoundError:
-        slot = slot
+        pass
     shutil.copytree("C:\\Users\\gmagu\\Downloads\\Nitrox\\world", string)
     print("World saved to Slot", slot, "successfully")
     print()
@@ -58,9 +58,7 @@ def wipe():
         string = "Personal Projects\\Nitrox Server Manager\\Worlds\\" + slot + "\\world"
     print("Are you sure you want to wipe this save slot")
     check = input("Y/n:")
-    if check == "n":
-        print()
-    elif check == "N":
+    if check.capitalize()[0] == "n":
         print()
     else:
         try:
@@ -87,7 +85,7 @@ while run:
 
     mode = int(input("Mode: "))
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    
+
     if mode == 1:
         load()
     if mode == 2:
