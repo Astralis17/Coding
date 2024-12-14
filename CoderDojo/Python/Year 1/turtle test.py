@@ -1,7 +1,7 @@
 
 import turtle
 i= 10
-    
+
 t = turtle.Turtle()
 t2 = turtle.Turtle()
 while i>0:
