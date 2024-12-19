@@ -45,7 +45,6 @@ while run:
 
         oppMove =  random.randint(0, 2)
 
-        oppMove = 2
         print("Opponent chose ", Options[oppMove])
 
         result  = challenge(Conditions[choice], oppMove)
