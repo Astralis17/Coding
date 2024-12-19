@@ -92,7 +92,7 @@ def decode(ciphertext):
     return plaintext
 
 
-
+print(encode("hello world"))
 
 
 
