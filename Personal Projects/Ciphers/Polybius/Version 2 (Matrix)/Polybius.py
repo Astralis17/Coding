@@ -1,3 +1,4 @@
+import json
 global Matrix
 Matrix = [
           ["a", "b", "c", "d", "e"],
@@ -6,6 +7,9 @@ Matrix = [
           ["q", "r", "s", "t", "u"],
           ["v", "w", "x", "y", "z"]
          ]
+databaseJS = open(r"Personal Projects\Ciphers\Polybius\Version 2 (Matrix)\customCharacters.json", "r")
+customCharacters = json.load(databaseJS)
+
 def decode(ciphertext, Capitalisation=0, CustomWords={}):
         ciphertext = list(ciphertext)
         plaintext = ""
@@ -89,6 +93,19 @@ def encode(plaintext, CustomWords={}):
 
         return ciphertext
 
+def reverseData(db):
+        addressList = list(db)
+        dbList = []
+        reversedDict = {}
+        for obj in addressList:
+                dbList.append(db[obj])
+        print(dbList)
+        x = 0
+        for obj in dbList:
+                reversedDict[obj] = addressList[x]
+                x+=1
+        return reversedDict
+
 
 print("Welcome to the Polybius Cipher Tool (Version 2! Now with added Matrices)")
 while True:
@@ -120,6 +137,17 @@ while True:
                 print("3: ALL CAPITALISATION")
                 capMode = int(input("Capitalisation mode: "))
                 print(decode(ciphertext, Capitalisation=capMode))
+        else:
+                reversedCC = reverseData(customCharacters)
+                print("~~~~~~~~~~~~~~~~~~~~~~")
+                print("CUSTOM CHAR DICTIONARY")
+                print("~~~~~~~~~~~~~~~~~~~~~~")
+                x = 0
+                print("Current characters are:")
+                print("Code : Character")
+                for char in customCharacters:
+                        print(char, "  :  ", customCharacters[str(char)])
+                        x += 1
 
         if input("Are you done (y/n): ").lower().startswith("y"):
                 break

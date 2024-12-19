@@ -14,3 +14,10 @@ def reverseData(db):
                 reversedDict[obj] = True
 
 reverseData(databasePY)
+
+
+
+x = 12345654321 - 81
+
+
+print(x/360)
