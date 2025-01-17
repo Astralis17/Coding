@@ -150,11 +150,11 @@ while run:
     if dashcool == 0:
         dashcolor = green
     elif dashcool != 0:
-        dashcolor = red         
+        dashcolor = red
     if dashcool == 0:
-        dashcoolsec = ""   
+        dashcoolsec = ""
     if dashcool == 10:
-        dashcoolsec = "0"        
+        dashcoolsec = "0"
     if dashcool == 159:
         dashcoolsec = "1"
     if dashcool == 319:
@@ -173,12 +173,11 @@ while run:
         dashcoolsec = "8"
     #Actual text countdown
     dashcooldown = font1.render(dashcoolsec, True, black)
-    if dashcool != 0 : 
+    if dashcool != 0 :
         dashcool = dashcool - 1
 
-    
-    
-#WrapAround 
+
+#WrapAround
 
     #Right to Left
     if playerx >= windowwidth + 1:
