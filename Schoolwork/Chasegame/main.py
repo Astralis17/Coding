@@ -64,10 +64,10 @@ class player:
                         MainPlayer.x = MainPlayer.x - MainPlayer.speed
 
 MainPlayer = player()
-count = 10
+count = 100000
 enemies = []
 while count > 0:
-        e = enemy(10, tRange=(3,50), x=windowwidth*(random.random()), y=windowheight*(random.random()), minDistance=200, maxDistance=1000, destination=(windowwidth*(random.random()),windowheight*(random.random())))
+        e = enemy(10, tRange=(3,4), minDistance=200, maxDistance=1000, destination=(windowwidth*0.5,windowheight*0.5))
         count -= 1
         enemies.append(e)
 
@@ -86,5 +86,5 @@ while run:
 
         pygame.draw.rect(window, (155,55,225), (MainPlayer.x, MainPlayer.y, 15,15))
         for e in enemies:
-                pygame.draw.circle(window, (255,255,255), (e.x, e.y), 1)
+                pygame.draw.circle(window, (255,255,255), (e.x, e.y), 3)
         pygame.display.flip()

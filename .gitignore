@@ -2,4 +2,7 @@
 *Puzzle
 *Archive
 *Docs
-__*
+pycache*
+*Observance
+*.ini
+*__pycache__*

@@ -51,9 +51,9 @@ def player_movement(playerx, playery, keys,speed, moving, sprite):
     if keys[pygame.K_DOWN]:
         playery += speed
         moving = True
-        sprite = 2 
+        sprite = 2
     return playerx, playery, moving, sprite,
-#Dashing    
+#Dashing
 
 
 def playerdash(playerx, playery, keys, speed, dashtick, dashcharge):
@@ -91,7 +91,7 @@ def spritedirection(target):
         sprite = 1
     elif target == 2:
         sprite = 1
-    elif target == 3:      
+    elif target == 3:
         sprite = 2
     elif target == 4:
         sprite = 2
@@ -99,7 +99,7 @@ def spritedirection(target):
         sprite = 2
     elif target == 6:
         sprite = 3
-    elif target == 7:      
+    elif target == 7:
         sprite = 3
     else:
         sprite = 2
@@ -117,7 +117,7 @@ def AnimationTicker(AnimTick,AnimFrame,moving):
     else:
         if moving == True:
             AnimTick += 1
-    
+
     return AnimTick, AnimFrame
 
 #Causes the Player to wrap around the edge of the screen when passing the boundries
