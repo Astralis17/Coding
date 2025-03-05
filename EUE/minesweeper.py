@@ -29,7 +29,7 @@ gridRef = {
         "Y": 24,
         "Z": 25
 }
-alph = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def createBoard(size:int):
         states = ["M", "B"]
@@ -38,7 +38,7 @@ def createBoard(size:int):
                 column = []
                 for y in range(0, size):
                         value = random.randint(0, 10)
-                        if value > 5:
+                        if value > 8:
                                 value = 0
                         else:
                                 value = 1
@@ -60,23 +60,25 @@ def viewBoard(grid):
                         #        cell = "\033[31m◄\033[0m"
                         #elif cell == "B":
                         #        cell = "\033[7m■\033[0m"
-                        ROW += "  "+ grid[x][y]
+                        ROW += "  " + grid[x][y]
                 displayed = f"{alph[x]}{ROW}"
                 print(displayed)
         print("")
 
-def check(x,y):
+def check(x,y, printing):
         global run
         global playerBoard
         x = gridRef[x]
         y = gridRef[y]
         cell = gridXY[x][y]
         if cell == "M": #"\033[31m◄\033[0m"
-                print("Mine")
-                playerBoard[x][y] = "\033[31m◄\033[0m"
+                if printing == 1:
+                        #print("Mine")
+                        pass
+                playerBoard[y][x] = "\033[31m◄\033[0m"
         elif cell == "B":
-                print("Blank")
-                playerBoard[x][y] = "□"
+                #print("Blank")
+                playerBoard[y][x] = "□"
 
 
 def mark(x,y):
@@ -184,31 +186,41 @@ for x in range(0, size):
                                         if gridYX[x][y+1] == "M":
                                                 value += 1
                 except IndexError:
-                        value
+                        value = 0
                 ROW.append(str(value))
         valueBoard.append(ROW)
 
+for row in valueBoard:
+        print(row)
 
-
-viewBoard(valueBoard)
+#viewBoard(valueBoard)
 
 viewBoard(gridYX)
 
 while run:
-        INPUT = input("Option: ")
-        if INPUT.capitalize()[0] == "C":
+        INPUT = input("Option: ").upper()
+        if INPUT[0] == "C":
                 x = input("Column: ").upper()
                 y = input("Row   : ").upper()
-                check(x,y)
+                check(x,y, 1)
 
-        elif INPUT.capitalize()[0] == "M":
+        elif INPUT[0] == "M":
                 x = input("Column: ").upper()
                 y = input("Row   : ").upper()
                 mark(x,y)
-        elif INPUT.capitalize()[0] == "V":
+        elif INPUT[0] == "V":
                 viewBoard(playerBoard)
-        elif INPUT.capitalize() == "RA":
-                for x in range(0, size):
-                        pass
+        elif INPUT == "RA":
+                print("Up the Ra")
+                for x in range(1,len(gridXY)+1):
+                        if x > size:
+                                x = size
+                        for y in range(1,len(gridXY)+1):
+                                if y > size -1:
+                                        y = size
+                                X = alph[x-1]
+                                Y = alph[y-1]
+                                check(X,Y,0)
+        print(INPUT)
 
 print("Bang")
