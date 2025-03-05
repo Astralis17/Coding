@@ -1,52 +1,72 @@
 html {
         background-image: image-set("Assets/Icon.png");
-        background-size: 10%;
+        background-size: 100%;
 }
 body {
         top: -10px;
         left: -10px;
         position: fixed;
         background-color: rgba(100, 100, 100, 0.9);
-        background-size: cover;
+        background-size: 110%;
         width: 100%;
         height: 100%;
 }
 .top {
-        left:0;
-        top:0;
-        position: fixed;
+        position:fixed;
         width: 100%;
-        height: 60px;
-        background-color: rgba(0, 255, 255, 0.384);
-        padding: 0;
-        margin:0;
+        top: 0;
+        right: 0;
+        font-weight: 600;
+        background-color:#071e2900;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
         text-align: center;
+        transition-duration: 0.4s;
+        white-space-collapse: nowrap;
+    }
+
+.top .link {
+        font-weight: 900;
+        margin: 15px;
+        padding: 15px;
+        padding-bottom: 18px;
+        padding-top: 18px;
+        font-size: larger;
+        color:black;
+        background-image:image-set("Assets/stone.jpeg");
+        background-size: 100%;
+        width: 120px;
+        display:inline-block;
+        transition-duration: 0.5s;
+    }
+
+.top .seperator {
+        font-weight: 900;
+        margin-top: -2px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color:black;
+        background-color: black;
+        background-size: 100%;
+        width: 10px;
+        border-radius: 10px;
+        display:inline-block;
 }
-.top a {
-        display: inline-block;
+
+.top .link:hover{
         margin: 5px;
-        width: 10%;
-        height:30px;
-        padding-left: 5%;
-        padding-right: 5%;
-        background-image: image-set("Assets/stone card.webp");
-}
+        padding: 25px;
+
+    }
+
+
 .center {
         top: 10px;
         left:10px;
-        padding-left:10%;
-        padding-right:10%
+        height: 100%;
+        margin-left:15%;
+        margin-right:15%;
+        background-color: rgba(19, 19, 19, 0.6);
 }
 
 
-@keyframes backgroundStart{
-        0%{
-
-        }
-        50%{
-
-        }
-        100%{
-
-        }
-}

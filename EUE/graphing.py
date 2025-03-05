@@ -79,7 +79,7 @@ else:
     axisMaxima = 1
 
 
-scalor = 1
+scalor = 4
 print("LengthMaxima:",LengthMaxima)
 10
 10
@@ -107,6 +107,7 @@ class Triangle:
         for point in points:
             self.points.append((point[0] * scalor, point[1] * scalor))
         self.colour = colour
+        print(self.__dict__)
 
 
     def draw(self, thickness):
@@ -121,7 +122,6 @@ class Triangle:
                              (pointB[0] + offsetH, pointB[1] + windowDim[1] + offsetV),
                              thickness
                             )
-
 
 
 #p1 = (0, 5)
