@@ -1,6 +1,6 @@
 import json
 
-databaseJS = open(r"Personal Projects\Ciphers\Polybius\Version 2 (Matrix)\customCharacters.json", "r")
+databaseJS = open("Personal Projects/Ciphers/Polybius/Version 2 (Matrix)/customCharacters.json", "r")
 databasePY = json.load(databaseJS)
 
 def reverseData(db):
@@ -13,6 +13,7 @@ def reverseData(db):
         for obj in dbList:
                 reversedDict[obj] = True
 
+print(databasePY)
 reverseData(databasePY)
 
 

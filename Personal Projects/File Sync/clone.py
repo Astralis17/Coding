@@ -1,7 +1,7 @@
 import shutil, os
 checking = True
-drivepaths = ["D:\\","E:\\","F:\\","G:\\","H:\\","I:\\","J:\\"]
-drivenames = ["D","E","F","G","H","I","J"]
+drivepaths = ["C:\\","D:\\","E:\\","F:\\","G:\\","H:\\","I:\\","J:\\"]
+drivenames = ["C","D","E","F","G","H","I","J"]
 drives = []
 folders = []
 x = 0
@@ -16,7 +16,7 @@ while checking:
         x += 1
     if x == len(drivepaths):
         checking = False
-    
+
 print((len(drives)), "drives are connected")
 print(drives)
 x = 0
