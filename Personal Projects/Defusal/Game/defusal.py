@@ -35,16 +35,16 @@ timing = []
 keypad = []
 
 moduleLists = {
-                "BT" : buttons,
-                "WR" : wires,
-                "HX" : hexadecimal,
-                "CT" : colourTiles,
-                "BN" : binary,
-                "CC" : colourCode,
-                "MT" : mathematics,
-                "MB" : multiButtons,
-                "TM" : timing,
-                "KY" : keypad
+        "BT" : buttons,
+        "WR" : wires,
+        "HX" : hexadecimal,
+        "CT" : colourTiles,
+        "BN" : binary,
+        "CC" : colourCode,
+        "MT" : mathematics,
+        "MB" : multiButtons,
+        "TM" : timing,
+        "KY" : keypad
 }
 
 

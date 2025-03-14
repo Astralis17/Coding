@@ -16,7 +16,7 @@ def seedGen(hash, seedInput="NULL"):
 
 def initDATA():
         from json import load as JSload
-        file = open("Game/data.json", "r")
+        file = open("Personal Projects/Defusal/Game/data.json", "r")
         DATA = JSload(file)
         return DATA
 
