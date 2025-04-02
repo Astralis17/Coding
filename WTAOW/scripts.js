@@ -5,8 +5,10 @@ function sleep(ms){
 function begone(chosenId){
         var element = document.getElementById(chosenId);
         element.style.top = "-200vh";
+        element.tabIndex = -1;
         sleep(3000).then(() => {
                 document.getElementById("base").style.overflowY = "visible"
+                element.style.display = "none";
         });
 }
 function socialIn(){
@@ -54,13 +56,15 @@ function checkEnabled(id, cname){
                 setCookie(cname, true, 365)
         }
         console.log(string)
-        if (string == "true"){
+        if (string == "false"){
+                document.getElementById("posterSwap").style.backgroundColor = "red"
+                document.getElementById("base").style.overflowY = "hidden";
+                document.getElementById("posterWTAOW").style.display = "none";
+        }
+        else{
                 element.style.display = "flex";
                 document.getElementById("base").style.overflowY = "hidden"
                 document.getElementById("posterSwap").style.backgroundColor = "#00FF00"
-        }
-        else{
-                document.getElementById("posterSwap").style.backgroundColor = "red"
         }
 }
 
@@ -78,14 +82,14 @@ function swapEnabled(cname){
         }
 }
 
-function schrodingersXeroPicture(){
+function schrodingersXeroPicture(className){
         string = getCookie("xeroImage")
         console.log(string)
 
-        picture = document.getElementsByClassName("xero")[0]["children"][0]
+        picture = document.getElementsByClassName(className)[0]["children"][0]
         console.log(picture)
 
-        if (string == "") {
+        if (string == ""||string == "undefined") {
                 fetch("./characters.json")
                 .then(res => res.json())
                 .then(data =>{
