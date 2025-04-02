@@ -31,40 +31,69 @@ def findLargestPower(base, num):
             power += 1
 
 
-
-num = input("Number: ")
-numed = list(reversed(num))
-baseIn = int(input("Base In: "))
-baseOut = int(input("Base Out: "))
-
-newNum = 0
-powered = 0
-for i in range(0, len(num)):
-    x = int(hexesInverse[numed[i]])
-    print(x)
-
-    newNum += x * (baseIn ** powered)
-    powered += 1
-
-print(newNum)
-num = newNum
+def function(hexes, num, baseOut, power):
+    order = []
+    while power != -1:
+        x = num // (baseOut ** power)
+        num -= x * (baseOut ** power)
+        order.append(str(x))
 
 
-power = findLargestPower(baseOut, num)
-
-order = []
-while power != -1:
-    x = num // (baseOut ** power)
-    num -= x * (baseOut ** power)
-    order.append(str(x))
+        power -= 1
 
 
-    power -= 1
+    output = ""
+
+    for element in order:
+        output += hexes[element]
+    print(output)
+    return output
 
 
-print(order)
-output = ""
+def new_func(hexes, hexesInverse, findLargestPower, function, num =input("Number: "),baseIn = int(input("Base In: ")),baseOut = input("Base Out: ")):
+    numed = list(reversed(num))
 
-for element in order:
-    output += hexes[element]
-print(output)
+    newNum = 0
+    powered = 0
+    for i in range(0, len(num)):
+        x = int(hexesInverse[numed[i]])
+
+        newNum += x * (baseIn ** powered)
+        powered += 1
+
+    print(newNum)
+    num = newNum
+
+    if len(baseOut) > 3:
+        baseOuts = baseOut.split(" ")
+        for baseOut in baseOuts:
+            baseOut = int(baseOut)
+            power = findLargestPower(baseOut, num)
+            function(hexes, num, baseOut, power)
+            ans = ""
+
+    else:
+        baseOut = int(baseOut)
+        power = findLargestPower(baseOut, num)
+        ans = function(hexes, num, baseOut, power)
+    return ans
+
+nums = input("Numbers: ")
+nums = nums.split(".")
+print(nums)
+outputs = []
+for num in nums:
+    ans = new_func(hexes, hexesInverse, findLargestPower, function, num =num, baseIn=10, baseOut="2")
+    outputs.append(ans)
+
+tempAnses = []
+for ans in outputs:
+    tempAns = ans
+    while len(tempAns) < 8:
+        tempAns = "0" + tempAns
+    tempAnses.append(tempAns)
+
+outputString = ""
+for tempAns in tempAnses:
+    outputString += tempAns + "."
+print(outputString)

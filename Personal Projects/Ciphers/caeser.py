@@ -18,7 +18,7 @@ else:
     print("~~~~~~~~~~~~~~~~~")
     print("ENCODING SELECTED")
     print("~~~~~~~~~~~~~~~~~")
-    mode = 1    
+    mode = 1
 if mode == 1:
     string = input("Plaintext: ")
     shift = int(input("How much to shift by: "))
@@ -44,7 +44,7 @@ if mode == 1:
                 processString += ALPHABET[(i + shift) % 26]
                 run = False
             i += 1
-            
+
         i = 0
         run = True
     print(processString)
@@ -62,7 +62,7 @@ if mode == 2:
                 processString += ALPHABET[(i - shift) % 26]
                 run = False
             i += 1
-            
+
         i = 26
         run = True
     print(processString)
