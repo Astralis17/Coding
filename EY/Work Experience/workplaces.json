@@ -1,0 +1,69 @@
+[
+        {
+                "name":"Ernst & Young",
+                "logo": "assets/ey.png",
+                "Dates": "7th-11th April",
+                "Hours": "10:00-15:00",
+                "Description":"Join us at Ernst & Young to help shape the future with confidence",
+                "Link":"https://ey.com"
+        },
+        {
+                "name":"Deloitte",
+                "logo": "assets/deloitte.png",
+                "Dates": "12th-16th March",
+                "Hours": "9:00-14:00",
+                "Description":"Join us at Deloitte and make an impact that matters",
+                "Link":"https://deloitte.com"
+
+        },
+        {
+                "name":"PwC",
+                "logo": "assets/pwc.png",
+                "Dates": "1st-6th December",
+                "Hours": "10:00 - 18:00",
+                "Description":"Building trust for today and tomorrow",
+                "Link":"https://pwc.ie"
+
+        },
+        {
+                "name":"KPMG",
+                "logo": "assets/kpmg.png",
+                "Dates": "1th-6th December",
+                "Hours": "11:30 - 17:00",
+                "Description":"Come with us and do what matters. For Better",
+                "Link":"https://kpmg.com"
+
+        },
+        {
+                "name": "Zenith Innovations",
+                "logo": "assets/zenith.png",
+                "Dates": "20th-24th May",
+                "Hours": "11:00-17:00",
+                "Description": "At Zenith Innovations, we push the boundaries of technology with cutting-edge solutions.",
+                "Link": "https://zenithinnovations.com"
+        },
+        {
+                "name": "Synergy Solutions",
+                "logo": "assets/synergy.png",
+                "Dates": "1st-5th July",
+                "Hours": "9:00-18:00",
+                "Description": "Synergy Solutions: Where innovation meets collaboration for unparalleled results.",
+                "Link": "https://synergysolutions.com"
+        },
+        {
+                "name": "Quantum Leap",
+                "logo": "assets/quantumleap.png",
+                "Dates": "15th-19th August",
+                "Hours": "8:00-16:00",
+                "Description": "Quantum Leap: Leading the way in quantum computing and beyond.",
+                "Link": "https://quleap.com"
+        },
+        {
+                "name": "Vanguard Enterprises",
+                "logo": "assets/vanguard.jpg",
+                "Dates": "12th-16th November",
+                "Hours": "9:00-18:00",
+                "Description": "Vanguard Enterprises:  Empowering businesses with innovative solutions and strategic vision.",
+                "Link": "https://vanguardeneterprises.com"
+        }
+]

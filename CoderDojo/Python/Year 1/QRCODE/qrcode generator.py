@@ -1,4 +1,5 @@
 import qrcode
 
-img = qrcode.make ("https://is.gd/t343CF")
-img.save("code.png")
+img = qrcode.make ("https://astralis0.github.io/TryInTY/")
+name = "TryInTY"#input("Name for QR code; ")
+img.save(name + ".png")
