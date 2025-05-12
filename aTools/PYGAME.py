@@ -1,13 +1,6 @@
 import pygame, random
+from math import dist
 pygame.init()
-
-
-windowDim = (1080,720)
-window = pygame.display.set_mode(windowDim)
-
-def PASS(self):
-    return
-
 class cursor:
     pressed = False
     def __init__(self):
@@ -19,46 +12,40 @@ class cursor:
         self.pressed = mouse.get_pressed(3)[0]
         self.rect = pygame.Rect(self.position[0],self.position[1],5,5)
 
-class button:
-    colour = "yellow"
-    window = window
-    def __init__(self, rect:pygame.Rect, hoverFunction=PASS, clickFunction=PASS):
-        self.position = rect.topleft
-        self.rect = rect
+
+class Button:
+    def PASS(self):
+        return
+    def __init__(self, window, hoverFunction=PASS, clickFunction=PASS):
+        self.colour = random.choice(["red", "blue", "yellow", "purple", "green"])
+        self.display = window
         self.onHover = hoverFunction
         self.onClick = clickFunction
-    
+
+class rectButton(Button):
+    def init(self, rect:pygame.Rect):
+        self.position = rect.topleft
+        self.rect = rect
+        return self
     def intersect(self, cursor:cursor):
         if self.rect.colliderect(cursor.rect):
             if cursor.pressed:
                 self.onClick(self)
             else:
                 self.onHover(self)
-            
-        
     def draw(self):
-        pygame.draw.rect(self.window, self.colour, self.rect)
+        pygame.draw.rect(self.display, self.colour, self.rect)
 
-mouse = cursor()
-boxes = [
-    button(
-    pygame.Rect(random.random()*windowDim[0],random.random()*windowDim[1], 50, 50),
-    ) for x in range(4)]
-
-
-run=True
-while run:
-    mouse.tick(pygame.mouse)
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-
-
-
-    print(cursor.pressed)
-    for box in boxes:
-        box.intersect(mouse)
-        box.draw()
-
-    pygame.display.update()
+class circleButton(Button):
+    def init(self, position, radius):
+        self.position = position
+        self.radius = radius
+        return self
+    def intersect(self, cursor:cursor):
+        if dist(cursor.rect.topleft, self.position) <=self.radius:
+            if cursor.pressed:
+                self.onClick(self)
+            else:
+                self.onHover(self)
+    def draw(self):
+        pygame.draw.circle(self.display, self.colour, self.position, self.radius)
