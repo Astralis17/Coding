@@ -3,13 +3,18 @@
                 "aurora",
                 "bloom",
                 "fireboa",
-                "jade",
-                "kira"
+                "jadesgarden",
+                "kirachi",
+                "mr sane",
+                "yurika"
         ],
         "aurora":{
+                "titleCard": false,
                 "title": "Aurora",
+                "gender": "Girlflux",
+                "pronouns": "She/They",
                 "about":[
-                        "Hiya, I'm Aurora, I'm the one of the voices of Xero and also the sole coder behind this entire website, I hope you like it.",
+                        "Hiya, I'm Aurora, I'm the one of the voices of {Xero} and also the sole coder behind this entire website, I hope you like it.",
                         "I've been coding for nearly 9 years now and I mainly do python, C# and HTML"
                 ],
                 "socials":{
@@ -17,5 +22,104 @@
                 },
                 "image": "assets/aurora.png",
                 "roles":["Coder", "VA", "Puzzlemaker"]
+        },
+        "fireboa":{
+                "titleCard": true,
+                "title": "Fireboaserpent",
+                "gender": "Male",
+                "pronouns": "He/Him",
+                "about": [
+                        ""
+                ],
+                "socials":{
+                        "youtube": "youtube.com/@fireboaserpent",
+                        "twitch": "twitch.tv/fireboaserpent",
+                        "tumblr": "tumblr.com/fireboaserpent",
+                        "rentry": "rentry.co/fireboaserpent"
+                },
+                "image": "assets/fireboa/icon.png",
+                "roles": ["Owner", "Staff", "Writer", "Musician", "Lyricist", "Singer", "VA", "Puzzlemaker"],
+                "css": ".titleCard{background-image: image-set('assets/fireboa/title.png');aspect-ratio:10/2}\n.crewpage div{background-color: #db2929;}"
+        },
+        "bloom":{
+                "titleCard": false,
+                "title": "Bloomaboo",
+                "gender": "?",
+                "pronouns": "Any",
+                "about": [
+                        ""
+                ],
+                "socials":{
+
+                },
+                "image": "assets/bloom.png",
+                "roles": ["Staff", "Writer", "Musician", "Lyricist", "Singer", "VA", "Puzzlemaker"]
+        },
+        "mr sane":{
+                "titleCard": false,
+                "title": "Mr Sane",
+                "pronouns": "He/They",
+                "about": [
+                        "Hello I'm Mr Sane! I voice {Alexis} in WTAOW, but I'm also a youtuber! If you like watching video games, horror, music and Vtubers, Ancient Egypt, anime, cosplays? And all over silly stupid humor",
+                        "Then I'm your guy!"
+                ],
+                "socials":{
+                        "youtube":"youtube.com/@mr_sane"
+                },
+                "image": "assets/{name}.png",
+                "roles": []
+        },
+        "yurika":{
+                "titleCard": false,
+                "title": "YourLocalYurika",
+                "pronouns": "She/Her/They",
+                "about": [
+                        "I'm an artist and musician for WTAOW",
+                        "Traditional art professional, digital art... arm I'm ok with that! /hj",
+                        "I play piano :)",
+                        "I might be inside your walls /j /silly"
+                ],
+                "socials":{
+
+                },
+                "image": "assets/{name}.png",
+                "roles": ["Artist", "Musician"]
+        },
+        "jadesgarden":{
+                "titleCard": false,
+                "title": "",
+                "about": [
+                        ""
+                ],
+                "socials":{
+
+                },
+                "image": "assets/{name}.png",
+                "roles": []
+        },
+        "kirachi":{
+                "titleCard": false,
+                "title": "",
+                "about": [
+                        ""
+                ],
+                "socials":{
+
+                },
+                "image": "assets/{name}.png",
+                "roles": []
+        },
+        "":{
+                "titleCard": false,
+                "title": "",
+                "about": [
+                        ""
+                ],
+                "socials":{
+
+                },
+                "image": "assets/{name}.png",
+                "roles": []
         }
+
 }
