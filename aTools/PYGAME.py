@@ -6,7 +6,7 @@ class cursor:
     def __init__(self):
         self.position = (0,0)
         self.rect = pygame.Rect(self.position[0],self.position[1],5,5)
-        
+
     def tick(self, mouse:pygame.mouse):
         self.position = mouse.get_pos()
         self.pressed = mouse.get_pressed(3)[0]
