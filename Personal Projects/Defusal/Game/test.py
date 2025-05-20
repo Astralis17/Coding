@@ -16,7 +16,7 @@ DATA = utils.initDATA()
 timerMilSec = 4.5 * 1000 * 60
 #difficulty = input("Difficulty: ").lower()
 timer = modules.timer(500, 350, -1, 0, timerMilSec)
-hex1 = modules.button(200, 350, 0, 0)
+hex1 = modules.Hexadecimal(200, 350, 0, 0)
 hex2 = modules.button(800, 350, 1, 0)
 mods = [hex1, hex2]
 side = 0
@@ -49,7 +49,9 @@ while run:
 
         for module in mods:
                 fails += module.fails
-
-        timer.tick(display, timerMilSec, 2)
+        if fails > 2 or timerMilSec <= 0:
+                run = False
+                print("BANG")
+        timer.tick(display, timerMilSec, fails)
 
         pygame.display.update()
