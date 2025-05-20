@@ -1,4 +1,4 @@
-from pygame import draw as pDraw, display, font
+from pygame import draw as pDraw, display, font,Rect
 from random import randint
 from math import dist
 import utils
@@ -6,11 +6,11 @@ import utils
 DATA = utils.initDATA()
 
 class timer:
-        def __init__(self, x:int, y:int, module:int, side:int, timerMS, size=120):
+        def __init__(self, x:int, y:int, moduleID:int, side:int, timerMS, size=120):
                 self.data = DATA["moduleData"]["Button"]
                 self.x = x
                 self.y = y
-                self.moduleID = module
+                self.moduleID = moduleID
                 self.text = self.data["Texts"][randint(0, len(self.data["Texts"])-1)]
                 self.colourB = tuple(self.data["Colours"][randint(-1, len(self.data["Colours"])-1)])
                 self.colourT = (230,230,230)
@@ -21,19 +21,33 @@ class timer:
                 self.timerMilSec = timerMS
                 self.timerSecond = int((timerMS / 1000) % 60)
                 self.timerMinute = int(timerMS / 1000 / 60)
+                self.displayString = str(self.timerMinute) + ":" + str(self.timerSecond)
+                self.timerObjMin = utils.my_font.render(str(self.timerMinute), True, (245, 20, 20))
+                self.timerObjCol = utils.my_font.render(":", True, (245, 20, 20))
+                self.timerObjSec = utils.my_font.render(str(self.timerSecond), True, (245, 20, 20))
 
 
 
         def tick(self, surface:display, timerMS, fails):
                 self.timerMilSec = timerMS
+
+                self.timerSecond = int((timerMS / 1000) % 60)
+                seconds = str(self.timerSecond)
+                seconds = seconds.split(".")[0]
+                minutes = str(self.timerMinute)
+                minutes = minutes.split(":")[0]
+                if len(minutes) == 1:
+                        minutes = "0" + minutes
+                if len(seconds) == 1:
+                        seconds = "0" + seconds
+                self.displayString = minutes + ":" + seconds
                 if self.timerMilSec % 1000 == 0:
-                        self.timerSecond = int((timerMS / 1000) % 60)
-                        seconds = str(self.timerSecond)
-                        if len(seconds) == 1:
-                                seconds = "0" + seconds
-                        print(self.timerMinute, ":", seconds)
+                        print(self.displayString)
+                self.timerObjMin = utils.my_font.render(minutes, True, (245, 20, 20))
+                self.timerObjSec = utils.my_font.render(seconds, True, (245, 20, 20))
                 if self.timerMilSec % 60000 == 0:
                         self.timerMinute = int(timerMS / 1000 / 60) -1
+
 
 
 
@@ -42,6 +56,9 @@ class timer:
 
                 #Timer Box
                 pDraw.rect(surface, (10,10,10), (self.x - self.size*4/10, self.y - self.size*7/16, self.size*8/10, self.size/4))
+                surface.blit(self.timerObjMin, (self.x - self.size*2.5/10, self.y - self.size*7/16 + 5))
+                surface.blit(self.timerObjCol, (self.x, self.y - self.size*7/16 + 5))
+                surface.blit(self.timerObjSec, (self.x + self.size*1.5/10, self.y - self.size*7/16 + 5))
                 #Marks Box
                 pDraw.rect(surface, (10,10,10), (self.x - self.size*4/10, self.y - self.size*1/8, self.size*8/10, self.size/2))
 
@@ -74,9 +91,6 @@ class button:
                         self.text = self.data["Texts"][randint(0, len(self.data["Texts"])-3)]
                 elif self.text == "Stop" and list(self.colourB) == self.data["Colours"][0]:
                         self.text = self.data["Texts"][randint(0, len(self.data["Texts"])-3)]
-
-                print(self.colourB)
-                print(self.text)
 
                 winCondition = []
                 if self.colourB == tuple(self.data["Colours"][0]) and self.text == self.data["Texts"][0]:
@@ -126,19 +140,16 @@ class button:
         def press(self, mousePos):
                 result = [self.presses]
                 if dist(mousePos, (self.x, self.y + self.size*2/3)) < self.arrowSize:
-                        print("Module", self.moduleID, ": ", "Down")
                         result = [self.presses, 0]
                         self.presses = 0
 
                 elif dist(mousePos, (self.x, self.y - self.size*2/3)) < self.arrowSize:
-                        print("Module", self.moduleID, ": ", "Up")
                         result = [self.presses, 1]
                         self.presses = 0
 
                 elif dist(mousePos, (self.x, self.y)) < self.size:
                         if self.presses < 10:
                                 self.presses += 1
-                                print("Module", self.moduleID, ": ", self.presses)
 
                 if len(result) == 2:
                         if result == self.winCondition:
@@ -206,3 +217,19 @@ class Hexadecimal:
                         elif mousePos[1] in range(int(self.y + self.size*3/16), int(self.y + self.size*3/16 + self.size/4)):
                                 print("Submit!")
 
+class Binary:
+        def __init__(self, x:int, y:int, module:int, side:int, size=120, ):
+                self.data = DATA["moduleData"]["Binary"]
+                self.x = x
+                self.y = y
+                self.moduleID = module
+                self.size = size*2
+                self.disarmed = False
+                self.side = side
+                self.fails = 0
+                self.moduleRect = Rect(self.x - self.size*8/15,self.y - self.size*8/15, self.size*16/15, self.size*16/15)
+                self.redRect = Rect(self.x + self.size*1/16, self.y + self.size*4/16, self.size*6/16, self.size/6)
+
+        def draw(self, surface):
+                pDraw.rect(surface, (160,160,160), self.moduleRect)
+                pDraw.rect(surface, (225, 40, 40), self.redRect)

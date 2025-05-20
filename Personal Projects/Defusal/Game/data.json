@@ -32,13 +32,14 @@
                                 "grrr": "67 72 72 72",
                                 "": ""
                         }
-                }
+                },
+                "Binary":{}
         },
         "difficulties":{
                 "easy":{
-                        "modules":["BT", "WR", "HX", "CT"],
+                        "modules":["BN", "WR", "HX", "CT"],
                         "weights":{
-                                "BT" : 1000,
+                                "BN" : 1000,
                                 "WR" : 0,
                                 "HX" : 100,
                                 "CT" : 0

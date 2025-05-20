@@ -15,7 +15,7 @@ moduleID = {
                 "WR" : "Wires",
                 "HX" : modules.Hexadecimal,
                 "CT" : "Colour Tiles",
-                "BN" : "Binary",
+                "BN" : modules.Binary,
                 "CC" : "Colour Code",
                 "MT" : "Mathematics",
                 "MB" : "Multi Buttons",
@@ -49,10 +49,10 @@ moduleLists = {
 
 
 
-moduleList = [buttons, wires, hexadecimal, colourTiles]
+moduleList = [buttons, wires, hexadecimal, binary]
 modulesInScene = []
 
-
+timeScale = 1
 
 for i in range(0, DATA["difficulties"][difficulty]["moduleCount"]):
         y = 0
@@ -76,11 +76,11 @@ fails = 0
 disarmed = 0
 side = 0
 timerMilSec = DATA["difficulties"][difficulty]["time"] * 1000 * 60
+timer = modules.timer(500, 350, -1, 0, timerMilSec)
 run = True
+pygame.mouse.set_visible(False)
 while run:
-        timerMilSec -= 5
-        if timerMilSec % 1000 == 0:
-                print(int(timerMilSec/1000))
+        timerMilSec -= 5 * timeScale
         pygame.time.delay(4)
         display.fill((0,0,0))
         pygame.draw.rect(display, (100,100,100), (50, 50, 900, 600))
@@ -111,13 +111,17 @@ while run:
                         fails += module.fails
                         if module.disarmed:
                                 disarmed += 1
-
+        timeScale = 2**fails
         if fails > 2 or timerMilSec <= 0:
                 run = False
                 print("BANG")
 
         if disarmed >= len(modulesInScene):
                 run = False
+        timer.tick(display, timerMilSec, fails)
+        pygame.draw.rect(display, "black", (mousePosition[0]-3,mousePosition[1]-3,6,6))
+        pygame.draw.rect(display, "white", (mousePosition[0]-2,mousePosition[1]-2,4,4))
+        
         pygame.display.update()
 
 pygame.quit()
