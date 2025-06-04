@@ -1,4 +1,5 @@
 *Astranium
+*le site
 *Puzzle
 *Archive
 *Docs
@@ -6,3 +7,4 @@ pycache*
 *Observance
 *.ini
 *__pycache__*
+sync.bat

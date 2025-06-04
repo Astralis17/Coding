@@ -1,6 +1,7 @@
 import pygame, random
 from math import dist
 pygame.init()
+pygame.font.init()
 class cursor:
     pressed = False
     def __init__(self):
@@ -49,3 +50,7 @@ class circleButton(Button):
                 self.onHover(self)
     def draw(self):
         pygame.draw.circle(self.display, self.colour, self.position, self.radius)
+
+
+def font(size, family ="Mono", fontWeight=0):
+        return pygame.font.SysFont(family, size, fontWeight)
