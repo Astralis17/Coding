@@ -1,29 +1,38 @@
 import aTools, utils, datetime, time
 from aTools import *
+from unix import time as Time
 from random import randint
-def deltaTimeCalc(frame, frames):
+import pygame
+def deltaTimeCalc(frame, frames, delayTick = 10):
 
         currentFrame = frames[frame]
         previousFrame = frames[(frame+1)%2]
         print(currentFrame/previousFrame)
         return 1
+timepoint = Time.time
+pygame.init()
 
 frame = 0
-frameTimes = [datetime.datetime.now().timestamp(),0]
+frameTimes = [timepoint()]
+time.sleep(0.001)
+
+frameTimes.append(timepoint())
+print("1:",frameTimes[0])
+print("2:",frameTimes[1])
+print(frameTimes[1]-frameTimes[0])
 deltaTime = 1
 timerMilSec = 40000
 gametime = 0
-delayClock =0
+delayClock = 0
+
 
 run = True
+frameStart = timepoint()
 while run:
-        frame += 1
-        frame %= 2
-        delayClock += 1
-        delayClock %= 2
+        frameEnd = timepoint()
+        frameDifference = abs(frameEnd - frameStart)
+        print((0.02-frameDifference)*1000)
+        pygame.time.delay(int((0.02-frameDifference)*1000))
+        frameStart = timepoint()
+        gametime += 20
 
-        frameTimes[frame] = datetime.datetime.now().timestamp()
-        deltaTime = deltaTimeCalc(frame, frameTimes)
-        timerMilSec -= 20 * deltaTime
-        gametime += 20 * deltaTime
-        time.sleep((0.1)*delayClock)

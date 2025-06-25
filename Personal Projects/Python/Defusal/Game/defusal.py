@@ -1,15 +1,18 @@
 import random, pygame, hashlib, datetime, modules
 from utils import *
 from aTools import *
+from unix import time as Time
 
 debug = True
 DATA = initDATA()
 seed = "DEFUSE THE BOMB"
 seed = ""
-seedGen(hashlib.md5, seedInput=seed)
+seedGen(seedInput=seed)
+timepoint = Time.time
 
 pygame.init()
-display = pygame.display.set_mode((1000, 700))
+
+display = pygame.display.set_mode((1000, 700), pygame.DOUBLEBUF, 32)
 #difficulty = input("Difficulty: ").lower()
 difficulty = "easy"
 moduleID = {
@@ -52,7 +55,6 @@ moduleLists = {
 
 moduleList = [buttons, wires, hexadecimal, binary, colourCode, mathematics, multiButtons, timing, keypad]
 modulesInScene = []
-
 timeScale = 1
 
 for i in range(0, DATA["difficulties"][difficulty]["moduleCount"]):
@@ -79,16 +81,16 @@ class Cursor:
                 self.x = 0
                 self.y = 0
                 self.Rect = pygame.Rect(self.x - 3, self.y - 3, 6, 6)
+                self.colourW = pygame.Color(225, 225, 225, 255)
+                self.colourB = pygame.Color(0, 0, 0, 0)
 
 
         def draw(self, display, mousePos):
                 self.x = mousePos[0]
                 self.y = mousePos[1]
                 self.Rect = pygame.Rect(self.x - 3, self.y - 3, 6, 6)
-                pygame.draw.rect(display, "black", (self.Rect))
-                pygame.draw.rect(display, "white", (self.x-2, self.y-2, 4, 4))
-
-def deltaTimeCalc(frame, frames):
+                pygame.draw.rect(display, self.colourB, (self.Rect))
+                pygame.draw.rect(display, self.colourW, (self.x-2, self.y-2, 4, 4))
 
 cursor = Cursor()
 
@@ -100,7 +102,7 @@ disarmed = 0
 side = 0
 gametime = 0
 frame = 0
-frameTimes = []
+frameTimes = [0,0]
 timerMilSec = DATA["difficulties"][difficulty]["time"] * 1000 * 60
 timer = modules.timer(500, 350, -1, 0, timerMilSec)
 run = True
@@ -108,12 +110,16 @@ pygame.mouse.set_visible(False)
 
 print(f"Module Count: {len(modulesInScene)}")
 game = True
+frameStart = timepoint()
 while run and game:
-        frame %= 2
-        frameTimes[frame] = datetime.time()
-        deltaTime = deltaTimeCalc(frame, frameTimes)
-        timerMilSec -= 20 * timeScale * deltaTime
-        gametime += 20 * deltaTime
+        frameEnd = timepoint()
+        frameDifference = abs(frameEnd - frameStart)
+        print(int((0.021-frameDifference)*1000))
+        pygame.time.delay(int((0.021-frameDifference)*1000))
+        frameStart = timepoint()
+        timerMilSec -= 20 * timeScale
+        gametime += 20
+
         display.fill((0,0,0))
         pygame.draw.rect(display, (100,100,100), (50, 50, 900, 600))
         mousePosition = pygame.mouse.get_pos()

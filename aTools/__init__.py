@@ -1,11 +1,23 @@
-from . import Pygame
+#from . import Pygame
 
 
 def localPath(filepath:str):
         from os import path
         from inspect import stack
+
+        backs = filepath.count("../")
+        filepath = filepath.replace("../", "")
+        filepath = filepath.replace("/", "\\")
+
         scriptDirectory = path.dirname(path.abspath(stack()[1].filename))
-        localFilepath = path.join(scriptDirectory, filepath)
+        pathList = scriptDirectory.split('\\')
+        for x in enumerate(pathList):
+                pathList[x[0]] += "\\"
+
+        scriptDir = ""
+        for x in pathList[:-backs]:
+                scriptDir += x
+        localFilepath = path.join(scriptDir, filepath)
         return localFilepath
 
 def seedGen(hash=None, seedInput="NULL"):

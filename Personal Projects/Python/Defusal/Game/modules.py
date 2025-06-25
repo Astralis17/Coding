@@ -614,6 +614,7 @@ class KeyPad(module):
                                 self.answer = self.data["orders"][RangeIndex]
                                 break
                 print(f"{self.moduleID}: {self.answer}")
+                del self.YVALUE, self.XVALUE, self.numbers
 
         def drawXtra(self, surface):
                 for tile in self.tiles:
@@ -645,21 +646,28 @@ class ColourCode(module):
 
                 self.bars = [
                         [
-                                Rect(self.x - self.size*8/16, self.y - self.size*(7 -1.5*i)/16, self.size*15/16, self.size*1/16),
+                                Rect(self.x - self.size*8/16, self.y - self.size*(7 - 1.5*i)/16, self.size*15/16, self.size*1/16),
                                 random.choice(self.data["colours"]),
                         ]for i in range(5)
                 ]
                 self.text = aTools.list([random.choice(self.data["colours"]) for i in range(5)]).__toString__()
 
-                self.redRect = Rect(self.x + self.size*1/16, self.y + self.size*5/16, self.size*6/16, self.size*4/16)
-                self.greenRect = Rect(self.x - self.size*8/16, self.y + self.size*5/16, self.size*6/16, self.size*3/16)
+                self.redRect = Rect(self.x + self.size*1.5/16, self.y + self.size*5/16, self.size*5.5/16, self.size*3/16)
+                self.greenRect = Rect(self.x + self.size*1.5/16, self.y + self.size*1/16, self.size*5.5/16, self.size*3/16)
+                self.displayRect = Rect(self.x - self.size*8/16, self.y + self.size*1/16, self.size*9/16, self.size*3/16)
                 self.disarmedRect = Rect(self.x + self.size*7.5/16, self.y - self.size*8/16, self.size*1/16, self.size*16/16)
                 self.displayText = aTools.Pygame.font(40).render(self.text, True, (255,255,255))
+                self.redCounter = aTools.Pygame.font(40).render("0", True, (255,255,255))
 
         def drawXtra(self, surface):
                 for bar in self.bars:
                         pDraw.rect(surface, self.data["coloursRGB"][bar[1]], bar[0])
+                pDraw.rect(surface, "red", self.redRect)
+                pDraw.rect(surface, "green", self.greenRect)
+                pDraw.rect(surface, "black", self.displayRect)
 
+                #surface.blit(self.displayText, (tile[0].left + self.tileSize/4, tile[0].top + self.tileSize/4))
+                #surface.blit(self.redCounter, (tile[0].left + self.tileSize/4, tile[0].top + self.tileSize/4))
 
 
 

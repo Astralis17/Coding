@@ -8,3 +8,4 @@ pycache*
 *.ini
 *__pycache__*
 sync.bat
+EUE
