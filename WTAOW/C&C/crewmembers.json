@@ -5,12 +5,13 @@
                 "fireboa",
                 "jadesgarden",
                 "kirachi",
-                "mr sane",
+                "mrSane",
                 "yurika",
                 "ashe",
                 "snow"
         ],
         "aurora":{
+                "generate": false,
                 "titleCard": false,
                 "title": "Aurora",
                 "gender": "Girlflux",
@@ -27,6 +28,7 @@
                 "roles":["Coder", "VA", "Puzzlemaker"]
         },
         "fireboa":{
+                "generate": false,
                 "titleCard": true,
                 "title": "Fireboaserpent",
                 "gender": "Male",
@@ -46,6 +48,7 @@
                 "css": ".titleCard{background-image: image-set('assets/fireboa/title.png');aspect-ratio:10/2}\n.crewpage div{background-color: #db2929;}"
         },
         "bloom":{
+                "generate": true,
                 "titleCard": false,
                 "title": "Bloomaboo",
                 "gender": "?",
@@ -59,7 +62,8 @@
                 "image": "assets/bloom.png",
                 "roles": ["Staff", "Writer", "Musician", "Lyricist", "Singer", "VA", "Puzzlemaker"]
         },
-        "mr sane":{
+        "mrSane":{
+                "generate": true,
                 "titleCard": false,
                 "title": "Mr Sane",
                 "pronouns": "He/They",
@@ -72,9 +76,10 @@
                         "youtube":"https://youtube.com/@mr_sane"
                 },
                 "image": "assets/{name}.png",
-                "roles": []
+                "roles": ["VA", "Artist", "Musician"]
         },
         "yurika":{
+                "generate": true,
                 "titleCard": false,
                 "title": "YourLocalYurika",
                 "pronouns": "She/Her/They",
@@ -91,6 +96,7 @@
                 "roles": ["Artist", "Musician"]
         },
         "jadesgarden":{
+                "generate": true,
                 "titleCard": false,
                 "title": "",
                 "about": [
@@ -103,6 +109,7 @@
                 "roles": []
         },
         "kirachi":{
+                "generate": true,
                 "titleCard": false,
                 "title": "Kirachi",
                 "gender":"",
@@ -119,6 +126,7 @@
                 "roles": ["Writer", "VA", "Musician"]
         },
         "ashe":{
+                "generate": true,
                 "titleCard": false,
                 "title": "Asheira",
                 "gender":"",
@@ -134,6 +142,7 @@
                 "roles": ["VA"]
         },
         "snow":{
+                "generate": true,
                 "titleCard": false,
                 "title": "Queen_Sniw",
                 "gender":"",
@@ -150,6 +159,7 @@
                 "roles": ["VA", "Singer"]
         },
         "":{
+                "generate": false,
                 "titleCard": false,
                 "title": "",
                 "gender":"",

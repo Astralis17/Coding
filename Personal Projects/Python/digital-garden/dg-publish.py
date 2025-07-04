@@ -3,6 +3,7 @@ import os
 
 directoryPath = "C:\\Users\\gmagu\\Documents\\GitHub\\Multiverse"#aTools.localPath("../Defusal/Game")
 
+blacklist = ["git", "gitignore", "obsidian", "trash"]
 directories = []
 filePaths = {}
 files = []
@@ -14,6 +15,8 @@ def findDirectories(path):
         for x in dirs:
                 if x.count(".") == 0:
                         findDirectories(os.path.join(path, x))
+                elif x.split(".")[-1] in blacklist:
+                        pass
                 else:
                         files.append(x)
                         filePaths.update({x:os.path.join(path, x)})
@@ -32,22 +35,26 @@ while len(directories) > 0:
 '''for file in files:
         print(filePaths[file])
 '''
-print(f"{type}: {filesByType[".md"]}")
+#print(f"{type}: {filesByType[".md"]}")
 print(f"File Count: {len(filesByType[".md"])}\n")
 
-unpublished = 0
-unmarkedFiles = []
-for path in filesByType[".md"]:
-        file = open(filePaths[path], "r")
-        lines = file.readlines()
-        firstLine = lines[0]
-        if firstLine != "---\n":
-                unpublished += 1
-                unmarkedFiles.append(path)
-                '''
-                fileW = open(filePaths["Home.md"], "w")
-                fileW.write("---\ndg-publish: true\n---\n" + lines)
-                fileW.close()
-                '''
-print(unpublished)
-print(unmarkedFiles)
+for type in filesByType["types"]:
+        unpublished = 0
+        unmarkedFiles = []
+        for path in filesByType[type]:
+                try:
+                        file = open(filePaths[path], "r")
+                        lines = file.readlines()
+                        if lines[1] != "dg-publish: true\n":
+                                unpublished += 1
+                                unmarkedFiles.append(path)
+                                '''
+                                fileW = open(filePaths["Home.md"], "w")
+                                fileW.write("---\ndg-publish: true\n---\n" + lines)
+                                fileW.close()
+                                '''
+                except:
+                        pass
+        print(f"Unpublished {type} files: {unpublished}")
+        for file in unmarkedFiles:
+                print(filePaths[file])

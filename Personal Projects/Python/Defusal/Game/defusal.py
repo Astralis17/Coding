@@ -14,7 +14,7 @@ pygame.init()
 
 display = pygame.display.set_mode((1000, 700), pygame.DOUBLEBUF, 32)
 #difficulty = input("Difficulty: ").lower()
-difficulty = "easy"
+difficulty = "hard"
 moduleID = {
                 "BT" : modules.Button,
                 "WR" : modules.Wires,
@@ -68,7 +68,7 @@ for i in range(0, DATA["difficulties"][difficulty]["moduleCount"]):
                 if i > 4:
                         y = 1
         else:
-                if i > 5:
+                if i > 1:
                         y = 1
         moduleLists[x].append(moduleID[x](modulePos[0], modulePos[1], i, y))
 
@@ -101,6 +101,7 @@ fails = 0
 disarmed = 0
 side = 0
 gametime = 0
+timeScale = 1
 frame = 0
 frameTimes = [0,0]
 timerMilSec = DATA["difficulties"][difficulty]["time"] * 1000 * 60
@@ -111,10 +112,10 @@ pygame.mouse.set_visible(False)
 print(f"Module Count: {len(modulesInScene)}")
 game = True
 frameStart = timepoint()
+gameStart = frameStart
 while run and game:
         frameEnd = timepoint()
         frameDifference = abs(frameEnd - frameStart)
-        print(int((0.021-frameDifference)*1000))
         pygame.time.delay(int((0.021-frameDifference)*1000))
         frameStart = timepoint()
         timerMilSec -= 20 * timeScale
@@ -154,7 +155,7 @@ while run and game:
         disarmed = 0
         for module in modulesInScene:
                 fails += module.fails
-                module.fails = 0 
+                module.fails = 0
                 if module.disarmed:
                         disarmed += 1
         timeScale = 2**fails

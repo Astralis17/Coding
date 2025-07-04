@@ -9,7 +9,7 @@ DATA = utils.initDATA()
 
 class Rect(RECT):
         def textPlacementY(self, size):
-                return self.top - size*0.5/16 + 5
+                return self.top - size*0.4/16 + 7
         def textPlacementX(self, size):
                 return self.left - size*0.5/16 + 5
         def __tuple__(self):
@@ -356,7 +356,6 @@ class Binary(module):
         def press(self, cursor):
                 if cursor.Rect.colliderect(self.redRect):
                         self.presses += 1
-                        print(self.winCondition)
                 elif cursor.Rect.colliderect(self.greenRect):
                         if self.presses == self.winCondition:
                                 self.disarmed = True
@@ -368,6 +367,7 @@ class Timing(module):
         tickable = True
         def init(self):
                 self.data = DATA["moduleData"]["Timing"]
+                self.time = 0
 
                 self.blackRect = Rect(self.x - self.size*7.5/16, self.y - self.size*7/16, self.size*14/16, self.size*6/16)
                 self.lightRect = Rect(self.x - self.size*7.5/16, self.y, self.size*14/16, self.size*3/16)
@@ -397,6 +397,7 @@ class Timing(module):
 
         def tick(self, *args):
                 gameTime = args[0]
+                self.time = gameTime
                 if gameTime % 1000 == 0:
                         self.orderPosition = (self.orderPosition+1)%5
 
@@ -458,7 +459,6 @@ class Tiles(typable):
                         self.submit()
 
 class Mathematics(typable):
-        tickable = False
         textLimit = 4
         def init(self):
                 self.data = DATA["moduleData"]["Mathematics"]
@@ -489,7 +489,7 @@ class Mathematics(typable):
                 pDraw.rect(surface, (10,10,10), self.answerRect)
                 pDraw.rect(surface, (90,90,90), self.submitRect)
                 surface.blit(self.answerObj[0], (self.x - self.size*(len(self.enterText)*(1-self.answerObj[1]/100))/16, self.answerRect.textPlacementY(self.size)))
-                surface.blit(self.submitObj, (self.x - self.size*4/16, self.submitRect.textPlacementY(self.size)))
+                surface.blit(self.submitObj, (self.x - self.size*4.5/16, self.y + self.size*4.3/16))
                 surface.blit(self.displayText, (self.x - self.size*4.3/16, self.y - self.size*6/16))
 
         def press(self, cursor):
@@ -641,15 +641,18 @@ class KeyPad(module):
                                         tile[4] = False
 
 class ColourCode(module):
+        presses = 0
+        answer = 0
         def init(self):
                 self.data = DATA["moduleData"]["ColourCode"]
 
                 self.bars = [
                         [
                                 Rect(self.x - self.size*8/16, self.y - self.size*(7 - 1.5*i)/16, self.size*15/16, self.size*1/16),
-                                random.choice(self.data["colours"]),
+                                random.choice(self.data["colours"])
                         ]for i in range(5)
                 ]
+                self.barColours = aTools.list([bar[1] for bar in self.bars]).__toString__()
                 self.text = aTools.list([random.choice(self.data["colours"]) for i in range(5)]).__toString__()
 
                 self.redRect = Rect(self.x + self.size*1.5/16, self.y + self.size*5/16, self.size*5.5/16, self.size*3/16)
@@ -657,19 +660,33 @@ class ColourCode(module):
                 self.displayRect = Rect(self.x - self.size*8/16, self.y + self.size*1/16, self.size*9/16, self.size*3/16)
                 self.disarmedRect = Rect(self.x + self.size*7.5/16, self.y - self.size*8/16, self.size*1/16, self.size*16/16)
                 self.displayText = aTools.Pygame.font(40).render(self.text, True, (255,255,255))
-                self.redCounter = aTools.Pygame.font(40).render("0", True, (255,255,255))
+
+                for val in range(len(self.barColours)):
+                        self.answer -= self.data["barValues"][self.barColours[val]]
+                        self.answer += self.data["letterValues"][self.text[val]]
+                print(f"{self.moduleID}: {self.answer}")
+
 
         def drawXtra(self, surface):
+                self.redCounter = aTools.Pygame.font(40).render(str(self.presses), True, (255,255,255))
                 for bar in self.bars:
                         pDraw.rect(surface, self.data["coloursRGB"][bar[1]], bar[0])
                 pDraw.rect(surface, "red", self.redRect)
                 pDraw.rect(surface, "green", self.greenRect)
                 pDraw.rect(surface, "black", self.displayRect)
 
-                #surface.blit(self.displayText, (tile[0].left + self.tileSize/4, tile[0].top + self.tileSize/4))
-                #surface.blit(self.redCounter, (tile[0].left + self.tileSize/4, tile[0].top + self.tileSize/4))
-
-
+                surface.blit(self.displayText, (self.x - self.size*7.5/16, self.y + self.size*1/16))
+                surface.blit(self.redCounter, (self.x + self.size*1.75/16, self.y + self.size*5/16))
+                #surface.blit(self.redCounter, (self.x - self.size*(len(str(self.redCounter))*0.7)/16, self.redRect.textPlacementY(self.size)))
+        def press(self, cursor):
+                if cursor.Rect.colliderect(self.redRect):
+                        self.presses += 1
+                elif cursor.Rect.colliderect(self.greenRect):
+                        if self.presses == self.answer:
+                                self.disarmed = True
+                        else:
+                                self.fails += 1
+                                self.presses = 0
 
 class Morse(typable):
         def init(self):

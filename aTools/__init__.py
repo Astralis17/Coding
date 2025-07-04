@@ -35,6 +35,18 @@ def seedGen(hash=None, seedInput="NULL"):
         seed(step2)
         return step2
 
+def midpoint(p1,p2):
+        mx = abs(p1[0] - p2[0])
+        my = abs(p1[1] - p2[1])
+        return (mx, my)
+
+def rangeLimit(x, floor= 0, roof=1):
+        if x < floor:
+                x = floor
+        elif x > roof:
+                x = roof
+        return x
+
 class LIST(list):
         def __toString__(self):
                 outString = ""
