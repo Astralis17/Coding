@@ -1,7 +1,13 @@
-#from . import Pygame
+try: from . import Math, Pygame
+except ImportError: import Math, Pygame # type: ignore
 
+class LerpInvalidPointsError(Exception):
 
-def localPath(filepath:str):
+        def __init__(self, message="The two points have different dimensions and are incompatible"):
+                super().__init__(message)
+def localPath(filepath:str) -> str:
+        """Generates a local filepath for use.\n
+        ../ can be used to go up a directory level"""
         from os import path
         from inspect import stack
 
@@ -36,17 +42,44 @@ def seedGen(hash=None, seedInput="NULL"):
         return step2
 
 def midpoint(p1,p2):
-        mx = abs(p1[0] - p2[0])
-        my = abs(p1[1] - p2[1])
+        mx = (p1[0] + p2[0]) /2
+        my = (p1[1] + p2[1]) /2
         return (mx, my)
 
-def rangeLimit(x, floor= 0, roof=1):
-        if x < floor:
-                x = floor
-        elif x > roof:
-                x = roof
-        return x
 
+def lerp(p1,p2, t):
+        """LERP, short for Linear Interpolation, gets the point between two points with the t value measuring the percentage of the new point from"""
+        if len(p1) != len(p2):
+                raise LerpInvalidPointsError()
+        dimensions = len(p1)
+        point = []
+        for i in range(dimensions):
+                p = p1[i] + (p2[i]*t) - (p1[i]*t)
+                point.append(p)
+        return point
+
+
+
+def randomiseList(list):
+        from random import randint
+        newList = []
+        while list != []:
+                ran = randint(0, len(list) - 1)
+                newList.append(list.pop(ran))
+        return newList
+
+
+def randomRGB():
+        from random import random
+        colour = 400
+        rgb = [0,0,0]
+        for i in range(0,3):
+                ran = random()
+                val = Math.rangeLimit(colour * ran, 0, 255)
+                rgb[i] = val
+                colour -= val
+        rgb = randomiseList(rgb)
+        return tuple(rgb)
 class LIST(list):
         def __toString__(self):
                 outString = ""
@@ -54,3 +87,4 @@ class LIST(list):
                         outString += str(element)
                 return outString
 list = LIST
+

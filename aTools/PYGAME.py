@@ -1,5 +1,6 @@
 import pygame, random
 from math import dist
+from random import choice
 pygame.init()
 pygame.font.init()
 class cursor:
@@ -18,7 +19,7 @@ class Button:
     def PASS(self):
         return
     def __init__(self, window, hoverFunction=PASS, clickFunction=PASS):
-        self.colour = random.choice(["red", "blue", "yellow", "purple", "green"])
+        self.colour = choice(["red", "blue", "yellow", "purple", "green"])
         self.display = window
         self.onHover = hoverFunction
         self.onClick = clickFunction

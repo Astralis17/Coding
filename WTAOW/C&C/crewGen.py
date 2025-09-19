@@ -1,6 +1,6 @@
-import json
+import json, aTools
 templateList = open("C&C/crew-template.txt", "r").readlines()
-crewmembers = json.load(open("C&C/crewmembers.json", "r"))
+crewmembers = json.load(open(aTools.localPath("crewmembers.json"), "r"))
 unnecessaryData = [""]
 
 templateString = ""
