@@ -4,40 +4,19 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title></title>
-                <link rel="icon" type="image/x-icon" href="../assets/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="crewStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <script src = "scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("assets/jadesgarden.png");
+                        :root{
+                                --background:image-set("assets/jadesgarden/icon.png");
                         }
-                        .textColumn table{
-                                width: auto;
-                                font-size: larger;
+
+                        @media only screen and (max-width: 700px) {
 
                         }
-                        .data{
-                                padding-left: 20px;
-                                width:auto;
-                                font-weight: 500;
-                        }
-                        .category{
-                                width:auto;
-                                margin-right: 20px;
-                                font-weight: 800;
-                        }
-                        @media only screen and (max-width: 700px) {
-                                .textColumn table{
-                                        font-size: 20px;
-                                }
-                                .data{
-                                        padding-left: 20px;
-                                        font-weight: 500;
-                                }
-                        }
-                        
                 </style>
         </head>
 
@@ -49,9 +28,9 @@
                                 <a tabindex="1" href = "../socials.html">Socials</a>
                                 <a tabindex="1" href = ".." >Home</a>
                                 <a tabindex="1" href = "../characters">Characters</a>
-                                <a tabindex="1" href = "../Fanart">Fanart</a>
+                                <a tabindex="1" href = "../Fanart" class="fanart">Fanart</a>
                                 <a tabindex="1" href = "." class = "active">C&C</a>
-                                <a tabindex="1" href = "../credits.html" style="margin-right: 15%;">Credits</a>
+                                <a tabindex="1" href = "../credits.html" style="margin-right: 15%;" class="credits">Credits</a>
                         </div>
                 </div>
 
@@ -60,7 +39,7 @@
                                 <a class = "image"></a>
                         </div>
                         <div class = "textColumn" id = "textCol">
-                                <h1 style = "margin-top:0; font-size: 28px;"></h1>
+                                <h1 style = "margin:0;"></h1>
                                 <table>
                                         <tr>
                                                 <td class = "category">Gender: </td>
@@ -72,6 +51,12 @@
                                         </tr>
                                         <tr>
                                                 <td class = "category">Roles: </td>
+                                                <td class = "data">
+                                                        
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td class = "category">Socials: </td>
                                                 <td class = "data">
                                                         
                                                 </td>

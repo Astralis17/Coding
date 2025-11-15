@@ -4,51 +4,31 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Fireboaserpent</title>
-                <link rel="icon" type="image/x-icon" href="../assets/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="crewStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <script src = "scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("assets/fireboa/icon.png");
+                        :root{
+                                --top-bg-colour: #6e0026;
+                                --top-a-bg-colour: #AC4B29;
+                                --top-a-colour: #0a0a0a15;
+                                --top-a-hover-bg-colour: #A00000;
+                                --top-a-hover-colour: aliceblue;
+                                --highlight: #fd3a3a;
+                                --text-colour: #000;
+                                --page-colour: #db2929af;
+                                --image: image-set("assets/fireboa/icon.png");
+                                --background: image-set("assets/fireboa/fireBackgrounds1.png");
                         }
-                        .textColumn table{
-                                width: auto;
-                                font-size: larger;
 
-                        }
-                        .data{
-                                padding-left: 20px;
-                                width:auto;
-                                font-weight: 500;
-                        }
-                        .category{
-                                width:auto;
-                                margin-right: 20px;
-                                font-weight: 800;
-                        }
                         .titleCard{
                                 background-image: image-set('assets/fireboa/title.png');
                         }
-                        .backing{
-                                background-image: image-set("assets/fireboa/fireBackgrounds1.png");
-                        }
-                        .top{
-                                transition-duration: 0.3s;
-                                background-color: #6e0026;
-                        }
-                        .top a{
-                                background-color: #AC4B29;
-                        }
+
                         @media only screen and (max-width: 700px) {
-                                .textColumn table{
-                                        font-size: 20px;
-                                }
-                                .data{
-                                        padding-left: 20px;
-                                        font-weight: 500;
-                                }
+
                                 .titleCard{
                                         width: 100%;
                                 }
@@ -64,18 +44,18 @@
                                 <a tabindex="1" href = "../socials.html">Socials</a>
                                 <a tabindex="1" href = ".." >Home</a>
                                 <a tabindex="1" href = "../characters">Characters</a>
-                                <a tabindex="1" href = "../Fanart">Fanart</a>
+                                <a tabindex="1" href = "../Fanart" class="fanart">Fanart</a>
                                 <a tabindex="1" href = "." class = "active">C&C</a>
-                                <a tabindex="1" href = "../credits.html" style="margin-right: 15%;">Credits</a>
+                                <a tabindex="1" href = "../credits.html" style="margin-right: 15%;" class="credits">Credits</a>
                         </div>
                 </div>
 
-                <div class = "crewPage fireboa">
+                <div class = "crewPage local">
                         <div class = "imageColumn" id = "imageCol">
                                 <a class = "image"></a>
                         </div>
                         <div class = "textColumn" id = "textCol">
-                                <diva class = 'titleCard' style="width: 100%;"></diva>
+                                <a class = 'titleCard' style='width:100%'></a>
                                 <table>
                                         <tr>
                                                 <td class = "category">Gender: </td>
@@ -88,21 +68,31 @@
                                         <tr>
                                                 <td class = "category">Roles: </td>
                                                 <td class = "data">
-                                                        <a href = "../roles.html#owner">Owner</a>,
+                                                        <a href = "../roles.html#director">Director</a>,
                                                         <a href = "../roles.html#staff">Staff</a>,
                                                         <a href = "../roles.html#writer">Writer</a>,
                                                         <a href = "../roles.html#musician">Musician</a>,
                                                         <a href = "../roles.html#lyricist">Lyricist</a>,
                                                         <a href = "../roles.html#singer">Singer</a>,
-                                                        <a href = "../roles.html#va">VA</a>,
-                                                        <a href = "../roles.html#puzzlemaker">Puzzlemaker</a>,
+                                                        <a href = "../roles.html#va">VA</a> &
+                                                        <a href = "../roles.html#puzzlemaker">Puzzlemaker</a>
+
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td class = "category">Socials: </td>
+                                                <td class = "data">
+                                                        <a href = "https://youtube.com/@fireboaserpent">Youtube</a>,
+                                                        <a href = "https://twitch.tv/fireboaserpent">Twitch</a>,
+                                                        <a href = "https://tumblr.com/fireboaserpent">Tumblr</a> &
+                                                        <a href = "https://rentry.co/fireboaserpent">Rentry</a>
 
                                                 </td>
                                         </tr>
                                 </table>
                                 <h3>About Me</h3>
                                 <p>
-
+                                        My name is Fire, and I'm the head of WTAOW! I originally started work on this project with the help of a few friends, but since then it has grown to be a bigger project with an absolutely amazing community <3
                                 </p>
                         </div>
                 </div>

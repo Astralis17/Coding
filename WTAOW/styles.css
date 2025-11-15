@@ -1,4 +1,10 @@
-
+:root{
+        --top-bg-colour:#0a9127be;
+        --top-a-bg-colour: #bdb64ea8;
+        --top-a-colour: #000000;
+        --top-a-hover-bg-colour: #e6dc5a;
+        --top-a-hover-colour: #000000;
+}
 html {
         overflow-y: overlay;
         overflow-x: hidden;
@@ -9,7 +15,7 @@ html {
         position: fixed;
         top: 0;
         right: 0;
-        background-image: image-set("assets/background.png");
+        background-image: image-set("assets/images/background.png");
         background-size: 100%;
         width: 100vw;
         height: 100vw;
@@ -37,7 +43,7 @@ html {
         top: 0;
         align-self: center;
         font-weight: 900;
-        background-color:#0a9127be;
+        background-color: var(--top-bg-colour);
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
         text-align: center;
@@ -82,14 +88,14 @@ html {
         transition-duration: 0.4s;
         font-weight: 900;
         font-size:xxx-large;
-        margin: 15px;
+        margin: 1vw;
         padding: 5px;
         padding-bottom: 18px;
         padding-top: 8px;
-        color: #000000;
-        background-color: #bdb64ea8;
+        color: var(--top-a-colour);
+        background-color: var(--top-a-bg-colour);
         background-size: cover;
-        width: 250px;
+        width: 18.5vw;
         height: 45px;
         border-radius: 13px;
         display:inline-block;
@@ -98,17 +104,24 @@ html {
         text-shadow: 1px 0 #000;
         z-index: 6;
 }
+.top:has(a:hover) a:not(a:hover){
+        background-color: var(--top-a-bg-colour);
+        color: var(--top-a-colour);
+}
+
 .top a.active{
-        background-color: rgba(230, 220, 90, 0.87)
+        background-color: var(--top-a-hover-bg-colour);
+        color: var(--top-a-hover-colour);
 }
 .top a.active:before{
-        background-color: rgba(230, 220, 90, 0.87)
+        background-color: var(--top-a-hover-bg-colour);
+        color: var(--top-a-hover-colour);
 }
 .top a:hover{
-        /*animation: testAnim1 3s infinite;
-        -webkit-animation: testAnim1 3s infinite;*/
-        background-color: rgba(230, 220, 90, 0.87);
+        background-color: var(--top-a-hover-bg-colour);
+        color: var(--top-a-hover-colour);
 }
+
 
 .top p{
         position: absolute;
@@ -152,7 +165,24 @@ html {
         height: 100vh;
         justify-self: center;
 }
+.textColumn table{
+        width: auto;
+        font-size: larger;
 
+}
+.data{
+        padding-left: 20px;
+        padding-top: 10px;
+        width:auto;
+        font-weight: 500;
+}
+.category{
+        width:auto;
+        vertical-align: text-top;
+        padding-top: 10px;
+        margin-right: 20px;
+        font-weight: 800;
+}
 .center {
         left:10px;
         margin-top: 300px;
@@ -254,6 +284,45 @@ html {
         background-size:contain;
         border-radius: 15px;
 }
+
+.top .credits{
+        display: none;
+        z-index: -99999999;
+}
+.top .fanart{
+        display: none;
+        z-index: -99999999;
+}
+
+.bottom{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 5vw;
+        height: 5vh;
+        padding: 5vh;
+        padding-left: 5vw;
+        padding-right: 5vw;
+}
+
+.newspaper{
+        z-index: 999999;
+        right: -98vw;
+        bottom: -88vh;
+        width: 90vw;
+        height: 80vh;
+        background-image: image-set("assets/untitled1199.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top;
+
+        transition-duration: 0.5s;
+}
+.newsbutton{
+        background-color: rgba(245, 245, 245, 0.356);
+        right: -14vw;
+        bottom: -14vh;
+}
 /*
 .social .body .image:hover{
         animation: spin 3s;
@@ -349,6 +418,18 @@ html {
         .social .body .text{
                 font-size: medium;
                 width: 60%;
+        }
+
+        .textColumn table{
+                font-size: 20px;
+        }
+        .data{
+                padding-left: 20px;
+                font-weight: 500;
+        }
+        .newsbutton{
+                background-color: rgba(245, 245, 245, 0);
+                display: none;
         }
         .desktop{display: none;}
         .mobile{display: contents;}

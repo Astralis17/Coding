@@ -4,9 +4,14 @@ function sleep(ms){
 }
 function begone(chosenId){
         var element = document.getElementById(chosenId);
+        string = getCookie("poster")
+        let x = 3000
+        if (string == "false"){
+                x = 0
+        }
         element.style.top = "-200vh";
         element.tabIndex = -1;
-        sleep(3000).then(() => {
+        sleep(x).then(() => {
                 document.getElementById("base").style.overflowY = "visible"
                 element.style.display = "none";
         });
@@ -62,9 +67,10 @@ function checkEnabled(id, cname){
         }
         console.log(string)
         if (string == "false"){
-                document.getElementById("posterSwap").style.backgroundColor = "red"
-                document.getElementById("base").style.overflowY = "hidden";
                 document.getElementById("posterWTAOW").style.display = "none";
+                document.getElementById("posterSwap").style.backgroundColor = "red"
+                document.getElementById("base").style.overflowY = "scroll";
+                begone("posterWTAOW")
         }
         else{
                 element.style.display = "flex";
@@ -90,11 +96,12 @@ function swapEnabled(cname){
 function schrodingersXeroPicture(className){
         string = getCookie("xeroImage")
         console.log(string)
+        console.log("test")
 
         picture = document.getElementsByClassName(className)[0]["children"][0]
         console.log(picture)
 
-        if (string == ""||string == "undefined") {
+        if (string == "" || string == "undefined") {
                 fetch("./characters.json")
                 .then(res => res.json())
                 .then(data =>{
@@ -131,3 +138,48 @@ function imgTxtAlignment(){
                 imgCol.style.height = x + "px"*/
         }
 }
+
+function paperfound(){
+        const audioElement = document.querySelector("audio")
+        const paper = document.getElementById("news");
+        const dark = document.getElementById("darken");
+
+        audioElement.play()
+        x = ((document.body.offsetWidth - paper.offsetWidth)/200).toString()
+        y = ((document.body.offsetHeight - paper.offsetHeight)/2).toString()
+
+
+        if (paper.style.bottom == "-88vh"){
+                paper.style.right = x + "px"
+                paper.style.bottom = "5vh"
+                dark.style.zIndex = "100"
+        }
+        else{
+                paper.style.bottom = "-88vh"
+                paper.style.right = "-98vw"
+                dark.style.zIndex = "-1"
+        }
+
+}
+
+function preloadImages(array) {
+    if (!preloadImages.list) {
+        preloadImages.list = [];
+    }
+    var list = preloadImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function() {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        }
+        list.push(img);
+        img.src = array[i];
+    }
+}
+
+preloadImages(["assets/images/background.png"]);

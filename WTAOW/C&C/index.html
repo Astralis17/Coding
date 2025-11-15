@@ -3,29 +3,33 @@
         <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Characters</title>
-                <link rel="icon" type="image/x-icon" href="../assets/icon.png">
+                <title>C&C</title>
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="crewStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <style>
                         .tile.fire .image{background-image: image-set("assets/fireboa/icon.png");}
-                        .tile.aurora .image{background-image: image-set("assets/aurora.png");}
-                        .tile.bloom .image{background-image: image-set("assets/bloomaboo.png");}
-                        .tile.tookie .image{background-image: image-set("assets/tookie.png");}
-                        .tile.yurika .image{background-image: image-set("assets/yurika.png");}
                         .tile.kirachi .image{background-image: image-set("assets/kirachi/icon.png");}
-                        .tile.mrSane .image{background-image: image-set("assets/mrSane.png");}
-                        .tile.ashe .image{background-image: image-set("assets/ashe.png");}
-                        .tile.snow .image{background-image: image-set("assets/snow.png");}
-                        .tile.lettia .image{background-image: image-set("assets/lettia.png");}
-                        .tile.maria .image{background-image: image-set("assets/maria.png");}
-                        .tile.marissa .image{background-image: image-set("assets/marissa.png");}
-                        .tile.medusa .image{background-image: image-set("assets/medusa.png");}
-                        .tile.milo .image{background-image: image-set("assets/milo.png");}
-                        .tile.owen .image{background-image: image-set("assets/owen.png");}
-                        .tile.sophia .image{background-image: image-set("assets/sophia.png");}
-                        .tile.thea .image{background-image: image-set("assets/thea.png");}
+                        .tile.aurora .image{background-image: image-set("assets/aurora/icon.png");}
+                        .tile.mrSane .image{background-image: image-set("assets/mrSane/icon.png");}
+                        .tile.yuri .image{background-image: image-set("assets/yuri/icon.jpg");}
+                        .tile.ashe .image{background-image: image-set("assets/ashe/icon.png");}
+                        .tile.snow .image{background-image: image-set("assets/snow/icon.png");}
+                        .tile.tookie .image{background-image: image-set("assets/tookie/icon.jpg");}
+                        .tile.harvey .image{background-image: image-set("assets/harvey/icon.jpg");}
+                        .tile.yazuroo .image{background-image: image-set("assets/yazuroo/icon.jpg");}
+                        .tile.rebecca .image{background-image: image-set("assets/rebecca/icon.png");}
+                        .tile.embry .image{background-image: image-set("assets/embry/icon.png");}
+                        .tile.koen .image{background-image: image-set("assets/koen/icon.jpg");}
+                        .tile.shi-no-ogama .image{background-image: image-set("assets/shi-no-ogama/icon.png");}
+                        .tile.death .image{background-image: image-set("assets/death/icon.png");}
+                        .tile.onyx .image{background-image: image-set("assets/onyx/icon.jpg");}
+                        .tile.name .image{background-image: image-set("assets/name.png");}
+
+
+                        .tile.bloom .image{background-image: image-set("assets/bloomaboo/icon.png");}
+                        .tile.jade .image{background-image: image-set("assets/jade/icon.png");}
                 </style>
 
                 <script>
@@ -35,6 +39,7 @@
                         function focusLink(hyperlink){
                                 self.on
                         }
+                        preloadImages(["assets/fireboa/icon.png", "assets/kirachi/icon.png", "assets/aurora/icon.png", "assets/mrSane/icon.png", "assets/yuri/icon.png", "assets/ashe/icon.png"])
                 </script>
 
         </head>
@@ -47,9 +52,9 @@
                                 <a href = "../socials.html">Socials</a>
                                 <a href = "..">Home</a>
                                 <a href = "../characters/">Characters</a>
-                                <a href = "../Fanart/">Fanart</a>
+                                <a href = "../Fanart" class="fanart">Fanart</a>
                                 <a href = "." class = "active">C&C</a>
-                                <a href = "../credits.html" style="margin-right: 15%;">Credits</a>
+                                <a href = "../credits.html" style="margin-right: 15%;" class="credits">Credits</a>
                         </div>
                 </div>
 
@@ -58,7 +63,8 @@
                                 <a class = 'image' id = "fire" href="fireboa.html" tabindex="0"></a>
                                 <a>Fireboa<span class = "mobile"><br></span></a>
                         </div>
-
+<!--
+                        Bloom and Jades tiles have been hidden as their pages are mostly blank
                         <div class = 'tile bloom' onclick = "link('bloomaboo.html')">
                                 <a class = 'image' id = "bloom" href="bloomaboo.html" tabindex="0"></a>
                                 <a>Bloomaboo<span class = "mobile"><br></span></a>
@@ -68,7 +74,7 @@
                                 <a class = 'image' id = "jade" href="jadesgarden.html" tabindex="0"></a>
                                 <a>Jade<span class = "mobile"><br></span></a>
                         </div>
-
+-->
                         <div class = 'tile kirachi' onclick = "link('kirachi.html')">
                                 <a class = 'image' id = "kirachi" href="kirachi.html" tabindex="0"></a>
                                 <a>Kirachi<span class = "mobile"><br></span></a>
@@ -79,14 +85,14 @@
                                 <a>Aurora<span class = "mobile"><br></span></a>
                         </div>
 
-                        <div class = 'tile mrSane' onclick = "link('mrSane.html')">
-                                <a class = 'image' id = "mrSane" href="mrSane.html" tabindex="0"></a>
+                        <div class = 'tile mrSane' onclick = "link('mr-Sane.html')">
+                                <a class = 'image' id = "mrSane" href="mr-Sane.html" tabindex="0"></a>
                                 <a>Mr Sane<span class = "mobile"><br></span></a>
                         </div>
 
-                        <div class = 'tile yurika' onclick = "link('yurika.html')">
-                                <a class = 'image' id = "yurika" href="yurika.html" tabindex="0"></a>
-                                <a>Yurika<span class = "mobile"><br></span></a>
+                        <div class = 'tile yuri' onclick = "link('yuri.html')">
+                                <a class = 'image' id = "yuri" href="yuri.html" tabindex="0"></a>
+                                <a>Yuri<span class = "mobile"><br></span></a>
                         </div>
 
                         <div class = 'tile ashe' onclick = "link('ashe.html')">
@@ -99,6 +105,49 @@
                                 <a>Snow<span class = "mobile"><br></span></a>
                         </div>
 
+                        <div class = 'tile tookie' onclick = "link('tookie.html')">
+                                <a class = 'image' id = "tookie" href="tookie.html" tabindex="0"></a>
+                                <a>Tookie<span class = "mobile"><br></span></a>
+                        </div>
+                        <div class = 'tile harvey' onclick = "link('harvey.html')">
+                                <a class = 'image' id = "harvey" href="harvey.html" tabindex="0"></a>
+                                <a>Harvey<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile yazuroo' onclick = "link('yazuroo.html')">
+                                <a class = 'image' id = "yazuroo" href="yazuroo.html" tabindex="0"></a>
+                                <a>Yazuroo<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile koen' onclick = "link('koen.html')">
+                                <a class = 'image' id = "koen" href="koen.html" tabindex="0"></a>
+                                <a>Koen<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile embry' onclick = "link('embry.html')">
+                                <a class = 'image' id = "embry" href="embry.html" tabindex="0"></a>
+                                <a>Embry<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile rebecca' onclick = "link('rebecca.html')">
+                                <a class = 'image' id = "rebecca" href="rebecca.html" tabindex="0"></a>
+                                <a>Rebecca<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile shi-no-ogama' onclick = "link('shi-no-ogama.html')">
+                                <a class = 'image' id = "shi-no-ogama" href="shi-no-ogama.html" tabindex="0"></a>
+                                <a>Shi-No-Ōgama<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile death' onclick = "link('death.html')">
+                                <a class = 'image' id = "death" href="death.html" tabindex="0"></a>
+                                <a>Death<span class = "mobile"><br></span></a>
+                        </div>
+
+                        <div class = 'tile onyx' onclick = "link('onyx.html')">
+                                <a class = 'image' id = "onyx" href="onyx.html" tabindex="0"></a>
+                                <a>Onyx<span class = "mobile"><br></span></a>
+                        </div>
                 </div>
 
 
@@ -107,6 +156,5 @@
                 <br>
         </body>
         <script>
-                schrodingersXeroPicture('xero')
         </script>
 </html>
