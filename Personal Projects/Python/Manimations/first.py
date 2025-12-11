@@ -1,0 +1,4 @@
+import manim
+
+manim.SampleSpace()
+

@@ -9,6 +9,36 @@
                 <link href="styles.css" rel="stylesheet">
                 <link rel="javascript" href = "scripts.js">
 
+                <!--
+                Source - https://stackoverflow.com/a
+                Posted by shemjay
+                Retrieved 2025-11-17, License - CC BY-SA 4.0
+                -->
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+                <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
+
+                // Your web app's Firebase configuration
+                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+                const firebaseConfig = {
+                apiKey: "AIzaSyAg63Q6pT8XDWoKLnzMltyhkD0Aecpttgs",
+                authDomain: "the-list-ac5a6.firebaseapp.com",
+                projectId: "the-list-ac5a6",
+                storageBucket: "the-list-ac5a6.firebasestorage.app",
+                messagingSenderId: "703643608140",
+                appId: "1:703643608140:web:61cce763fb02001eea80e9",
+                measurementId: "G-6CT4YVZ9DS"
+                };
+
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                </script>
                 <style>
 
                 </style>
