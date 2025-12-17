@@ -1,10 +1,28 @@
-try: from . import Math, Pygame
-except ImportError: import Math, Pygame # type: ignore
+try: from . import Math, Pygame, Statistics
+except ImportError: import Math, Pygame, Statistics # type: ignore
 
 class LerpInvalidPointsError(Exception):
 
         def __init__(self, message="The two points have different dimensions and are incompatible"):
                 super().__init__(message)
+
+class LIST(list):
+        def __toString__(self):
+                outString = ""
+                for element in self:
+                        outString += str(element)
+                return outString
+        def elementsToString(self):
+                outList = LIST()
+                for element in self:
+                        outList.append(str(element))
+                return outList
+        def elementsToInt(self):
+                outList = LIST()
+                for element in self:
+                        outList.append(int(element))
+                return outList
+
 def localPath(filepath:str) -> str:
         """Generates a local filepath for use.\n
         ../ can be used to go up a directory level"""
@@ -46,7 +64,6 @@ def midpoint(p1,p2):
         my = (p1[1] + p2[1]) /2
         return (mx, my)
 
-
 def lerp(p1,p2, t):
         """LERP, short for Linear Interpolation, gets the point between two points with the t value measuring the percentage of the new point from"""
         if len(p1) != len(p2):
@@ -58,8 +75,6 @@ def lerp(p1,p2, t):
                 point.append(p)
         return point
 
-
-
 def randomiseList(list):
         from random import randint
         newList = []
@@ -67,7 +82,6 @@ def randomiseList(list):
                 ran = randint(0, len(list) - 1)
                 newList.append(list.pop(ran))
         return newList
-
 
 def randomRGB():
         from random import random
@@ -80,11 +94,6 @@ def randomRGB():
                 colour -= val
         rgb = randomiseList(rgb)
         return tuple(rgb)
-class LIST(list):
-        def __toString__(self):
-                outString = ""
-                for element in self:
-                        outString += str(element)
-                return outString
+
 list = LIST
 
