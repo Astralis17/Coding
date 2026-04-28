@@ -4,17 +4,15 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Medusa</title>
-                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.webp">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="characterStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("assets/medusa.png");
-                        }
-
-                        @media only screen and (max-width: 700px) {
-
+                        :root{
+                                --image: image-set('assets/medusa.webp');
+                                --page-colour: #c1a3ff;
+                                --highlight: #487a9d;
                         }
                 </style>
         </head>
@@ -46,7 +44,7 @@
                                         </tr>
                                         <tr>
                                                 <td class = "category">Pronouns:</td>
-                                                <td class = "data">He/She/They/?/</td>
+                                                <td class = "data">He/She/They</td>
                                         </tr>
                                         <tr>
                                                 <td class = "category">Orientation:</td>
@@ -54,7 +52,7 @@
                                         </tr>
                                         <tr>
                                                 <td class = "category">Age:</td>
-                                                <td class = "data">Younger & Older than you</td>
+                                                <td class = "data">Both younger & older than you</td>
                                         </tr>
                                         <tr>
                                                 <td class = "category">Eyes:</td>
@@ -65,7 +63,7 @@
                                                 <td class = "data">6'1</td>
                                         </tr>
                                         <tr>
-                                                <td class = "category">Story Role:</td>
+                                                <td class = "category storyRole">Story Role:</td>
                                                 <td class = "data">Mysterious Extra</td>
                                         </tr>
                                         <tr>
@@ -82,12 +80,12 @@
                         </div>
                 </div>
 
-                <div class = "bottom">
+                <div class = "bottom picrew-link">
+                        <a class="image" href="https://picrew.me/en/image_maker/1706331"></a>
                 </div>
                 <br>
         </body>
         <script>
-                imgTxtAlignment();
-                moveUp("characterPage")
+                loadCharacter()
         </script>
 </html>

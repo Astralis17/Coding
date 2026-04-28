@@ -4,17 +4,15 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Blake</title>
-                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.webp">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="characterStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("assets/blake.png");
-                        }
-
-                        @media only screen and (max-width: 700px) {
-
+                        :root{
+                                --image: image-set('assets/blake.webp');
+                                --page-colour: #000000;
+                                --text-colour: aliceblue;
                         }
                 </style>
         </head>
@@ -65,13 +63,13 @@
                                                 <td class = "data">6'0</td>
                                         </tr>
                                         <tr>
-                                                <td class = "category">Story Role:</td>
+                                                <td class = "category storyRole">Story Role:</td>
                                                 <td class = "data">Side</td>
                                         </tr>
                                         <tr>
                                                 <td class = "category">Voice Actor:</td>
                                                 <td class = "data">
-                                                        <a href="../C&C/rebecca.html">Rakumaroo</a>
+                                                        <a href="../C&C/rebecca.html">Rebecca Mondry-Zanaglio </a>
                                                 </td>
                                         </tr>
                                 </table>
@@ -82,12 +80,13 @@
                         </div>
                 </div>
 
-                <div class = "bottom">
+                <div class = "bottom picrew-link">
+                        <a class="image" href="https://picrew.me/en/image_maker/1706331"></a>
+                        
                 </div>
                 <br>
         </body>
         <script>
-                imgTxtAlignment();
-                moveUp("characterPage")
+                loadCharacter()
         </script>
 </html>

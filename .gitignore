@@ -8,4 +8,4 @@ pycache*
 *.ini
 *__pycache__*
 Rust
-sync.bat
+sync

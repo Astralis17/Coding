@@ -29,19 +29,37 @@ def localPath(filepath:str) -> str:
         from os import path
         from inspect import stack
 
-        backs = filepath.count("../")
-        filepath = filepath.replace("../", "")
-        filepath = filepath.replace("/", "\\")
+        home = True
+        backs = 0
+
+        if filepath.__contains__("../"):
+                backs = filepath.count("../")
+                filepath = filepath.replace("../", "")
+        elif filepath.__contains__("./"):
+                home = True
+                filepath = filepath.replace("./", "")
+
+
+        # print(f"{filepath=}")
 
         scriptDirectory = path.dirname(path.abspath(stack()[1].filename))
-        pathList = scriptDirectory.split('\\')
-        for x in enumerate(pathList):
-                pathList[x[0]] += "\\"
+        # print(f"{scriptDirectory=}")
 
-        scriptDir = ""
-        for x in pathList[:-backs]:
-                scriptDir += x
-        localFilepath = path.join(scriptDir, filepath)
+        if backs != 0:
+                pathList = scriptDirectory.split('/')
+                for x in enumerate(pathList):
+                        pathList[x[0]] += "/"
+                # print(f"{pathList=}")
+                # print(f"{pathList[:-backs]=}")
+                scriptDir = ""
+                for x in pathList[:-backs]:
+                        scriptDir += x
+                # print(f"{scriptDir=}")
+                localFilepath = path.join(scriptDir, filepath)
+        elif home:
+                localFilepath = path.join(scriptDirectory, filepath)
+        
+        # print(localFilepath)
         return localFilepath
 
 def seedGen(hash=None, seedInput="NULL"):
@@ -97,3 +115,5 @@ def randomRGB():
 
 list = LIST
 
+if __name__ == "__main__":
+        print(f"{localPath("../")=}")

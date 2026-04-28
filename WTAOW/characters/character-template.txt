@@ -4,18 +4,17 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>TITLE</title>
-                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.webp">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="characterStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("IMAGE");
-                        }
-
-                        @media only screen and (max-width: 700px) {
-
-                        }
+                        /* :root{
+                                --image: image-set(IMAGE);
+                                --page-colour: PAGE-COLOUR;
+                                --text-colour: TEXT-COLOUR;
+                                --highlight: HIGHLIGHT;
+                        } */
                 </style>
         </head>
 
@@ -61,11 +60,11 @@
                                                 <td class = "data">EYES</td>
                                         </tr>
                                         <tr>
-                                                <td class = "category">Height</td>
+                                                <td class = "category">Height:</td>
                                                 <td class = "data">HEIGHT</td>
                                         </tr>
                                         <tr>
-                                                <td class = "category">Story Role:</td>
+                                                <td class = "category storyRole">Story Role:</td>
                                                 <td class = "data">ROLE</td>
                                         </tr>
                                         <tr>
@@ -82,13 +81,12 @@
                         </div>
                 </div>
 
-                <div class = "bottom">
+                <div class = "bottom picrew-link">
+                        <a class="image" href="PICREW"></a>
                 </div>
                 <br>
         </body>
         <script>
-                imgTxtAlignment();
-                moveUp("characterPage")
-                SCRIPT
+                loadCharacter()
         </script>
 </html>

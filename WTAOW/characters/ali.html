@@ -4,17 +4,15 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Ali</title>
-                <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
+                <link rel="icon" type="image/x-icon" href="../assets/images/icon.webp">
                 <link href="../styles.css" rel="stylesheet" type="text/css" media="all">
                 <link href="characterStyles.css" rel="stylesheet" type="text/css" media="all">
                 <script src = "../scripts.js"></script>
                 <style>
-                        .image{
-                                background-image: image-set("assets/ali.png");
-                        }
-
-                        @media only screen and (max-width: 700px) {
-
+                        :root{
+                                --image: image-set('assets/ali.webp');
+                                --page-colour: #ffcca3;
+                                --highlight: #ff5c59;
                         }
                 </style>
         </head>
@@ -46,7 +44,7 @@
                                         </tr>
                                         <tr>
                                                 <td class = "category">Pronouns:</td>
-                                                <td class = "data">He/They/?/</td>
+                                                <td class = "data">He/They</td>
                                         </tr>
                                         <tr>
                                                 <td class = "category">Orientation:</td>
@@ -65,7 +63,7 @@
                                                 <td class = "data">5'1</td>
                                         </tr>
                                         <tr>
-                                                <td class = "category">Story Role:</td>
+                                                <td class = "category storyRole">Story Role:</td>
                                                 <td class = "data">Protagonist</td>
                                         </tr>
                                         <tr>
@@ -76,18 +74,18 @@
                                         </tr>
                                 </table>
                                 <h3>Abilities</h3>
-                                <p></p>
+                                <p>Ali doesn't possess any abilities.</p>
                                 <h3>Personality</h3>
-                                <p>Ali is a cheerful and bright kid, filled with hope. He lost his big sister a few months ago, and is desperate to find her. They believe that everyone deserves a second chance, and are determined to trust people even when <a href = 'alexis.html'>Alexis</a> won't</p>
+                                <p>Ali is a cheerful and bright kid, filled with hope. He lost his big sister a few months ago, and is desperate to find her. They believe that everyone deserves a second chance, and are determined to trust people even when <a href = 'alexis.html'>Alexis</a> won't.</p>
                         </div>
                 </div>
 
-                <div class = "bottom">
+                <div class = "bottom picrew-link">
+                        <a class="image" href="https://picrew.me/en/image_maker/1706331"></a>
                 </div>
                 <br>
         </body>
         <script>
-                imgTxtAlignment();
-                moveUp("characterPage")
+                loadCharacter()
         </script>
 </html>
