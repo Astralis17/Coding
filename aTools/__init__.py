@@ -113,6 +113,14 @@ def randomRGB():
         rgb = randomiseList(rgb)
         return tuple(rgb)
 
+def colourFromHash(obj):
+        "Returns a colour derived from the hash of an object"
+        binaryHash = bin(hash(obj))
+        r = int(binaryHash[-9:-1], base=2)
+        g = int(binaryHash[-17:-9], base=2)
+        b = int(binaryHash[-25:-17], base=2)
+        c=(r,g,b)
+        return c
 list = LIST
 
 if __name__ == "__main__":

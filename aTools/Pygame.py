@@ -2,7 +2,7 @@ import pygame, random
 from math import dist
 from random import choice
 pygame.init()
-pygame.font.init()
+# pygame.font.init()
 class cursor:
     pressed = False
     def __init__(self):
