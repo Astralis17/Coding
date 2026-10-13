@@ -1,3 +1,4 @@
+from __future__ import annotations
 import pygame, math, aTools
 
 
@@ -8,10 +9,12 @@ display = pygame.display.set_mode((800, 600))
 v = -eu
 m1*u1 + m2*u2 = m1*v1 + m2*v2
 """
+clock = pygame.time.Clock()
 
 idSphereNum = 0
 idWallNum = 0
 collisionCount = 0
+deltaTime = 1
 class Sphere:
         colCoolDown = 0
         drawVectors2 = True
@@ -19,10 +22,11 @@ class Sphere:
                 global idSphereNum
                 self.id = idSphereNum
                 idSphereNum += 1
+                
                 if velocity:
-                        self.velocity = velocity
+                        self.velocity:list[float] = velocity
                 else:
-                        self.velocity = [0,0]
+                        self.velocity:list[float] = [0,0]
                 self.position = position
                 self.display:pygame.Surface = window
                 self.size:float = size
@@ -131,6 +135,7 @@ class Sphere:
                         dimension = 1
                 else:
                         dimension = 0
+                        
 
                 self.velocity[dimension] = -self.velocity[dimension]
 
@@ -147,14 +152,13 @@ class Sphere:
                         pygame.draw.line(self.display, self.vectorColour, self.position, endPos, 3)
                         # pygame.draw.line()
 
-        def restitutionCoefficient(self, collidingObj:Sphere|int)->float:
+        def restitutionCoefficient(self, collidingObj:Sphere)->float:
                 if type(collidingObj) == type(int):
                         return self.elasticity * sphereManager[collidingObj].elasticity
                 else:
                         return self.elasticity*collidingObj.elasticity
 
                 
-
 class SphereManager(dict):
         def __init__(self):
                 self = {0:0}
@@ -202,23 +206,30 @@ class Wall():
         def draw(self):
                 pygame.draw.rect(self.display, "grey", self.rect)
 
-
-
+class Cursor():
+        position = [0,0]
+        def __init__(self):
+                ...
+        def tick(self):
+                self.position = list(pygame.mouse.get_pos())
+                self.pressed = pygame.mouse.get_pressed()
 
 
 sphereManager = SphereManager()
 wallManager = WallManager()
-sphereManager.addSphere([50, 500], mass = 100, velocity=[1, 0])
-sphereManager.addSphere([100, 500], mass = 1, velocity=[0, 0])
-# sphereManager.addSphere([750, 100], mass = 2, velocity=[-6, 13])
+sphereManager.addSphere([50, 500], mass = 100, velocity=[1, -2])
+sphereManager.addSphere([100, 500], mass = 1, velocity=[0, 3])
+sphereManager.addSphere([750, 100], mass = 2, velocity=[-6, 13])
 
 wallManager.addWall((0,0,-50,600), drawing=True)  # Left
 wallManager.addWall((0,0,800,-50), drawing=True)  # Top
 wallManager.addWall((0,600,800,650), drawing=True)# Right
 wallManager.addWall((800,0,850,600), drawing=True)# Bottom
 
+
 run = True
 while run:
+        deltaTime = clock.tick(60) / 1000
         pygame.time.delay(20)
         display.fill("black")
         for event in pygame.event.get():

@@ -1,5 +1,5 @@
 class Vector2:
-        def __init__(self, x=0, y=0, angle=0, amplitude=0):
+        def __init__(self, x:int|float=0, y:int|float=0, angle=0, amplitude=0):
                 if angle or amplitude:
                         self.angle = angle
                         self.amplitude = amplitude
